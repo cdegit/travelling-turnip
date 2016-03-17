@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: TravellingTurnip-dev
+global:
+  application_name: TravellingTurnip
+  default_ec2_keyname: aws-eb
+  default_platform: Node.js
+  default_region: us-west-2
+  profile: eb-cli
+  sc: git

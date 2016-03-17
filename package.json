@@ -1,0 +1,30 @@
+{
+  "name": "TravellingTurnip",
+  "version": "0.0.0",
+  "author": {
+    "name": "Cassandra de Git",
+    "email": "cassandra.m.degit@gmail.com",
+    "web": "http://cassandradegit.com"
+  },
+  "contributors": [{
+    "name": "Rina Narciso",
+    "email": "rinanarciso@gmail.com"
+  },{
+    "name": "Stephanie Bourgeois",
+    "email": "Stephanie.j.bourgeois@gmail.com"
+  },{
+    "name": "Michelle Liu",
+    "email": "michelleliuwen@gmail.com"
+  }],
+  "description": "Lorem Ipsum",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "license": "ISC"
+}
