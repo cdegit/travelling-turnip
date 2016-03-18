@@ -9,20 +9,12 @@ $(function(){
 	});
 
 	var Meal = Backbone.Model.extend({
-		defaults: function() {
-			return {
-				title: 'Rosemary Foccacia',
-				nearby: true,
-				recipes: true,
-				desc: 'Lorem ipsum',
-				saved: false
-			}
-		},
-
 		toggle: function() {
 			this.save({saved: !this.get("saved")});
 		}
 	});
+
+	var Recipe = Backbone.Model.extend({});
 
 	var MealList = Backbone.Collection.extend({
 		model: Meal,
@@ -39,6 +31,23 @@ $(function(){
 		className: 'c-meal',
 		template: _.template($('#meal-template').html()),
 		detailTemplate: _.template($('#meal-detail-template').html()),
+
+		render: function(detail) {
+			if (detail) {
+				this.$el.html(this.detailTemplate(this.model.toJSON()));
+			} else {
+				this.$el.html(this.template(this.model.toJSON()));
+			}
+      		
+      		return this;
+      	}
+	});
+
+	var RecipeView = Backbone.View.extend({
+		tagName: 'div',
+		className: 'c-recipe',
+		template: _.template($('#recipe-template').html()),
+		detailTemplate: _.template($('#recipe-detail-template').html()),
 
 		render: function(detail) {
 			if (detail) {
@@ -76,12 +85,27 @@ $(function(){
 		if (Meals.get(id)) {
 			var view = new MealView({model: Meals.get(id)});
  			$("#main").html(view.render(true).el);
+ 		} else {
+ 			router.navigate('meals', {trigger: true});
  		}
-
 	});
 
 	router.on('route:mealRecipes', function(id) {
 		// a meal has recipes that will be displayed here
+		var meal = Meals.get(id);
+
+		if (meal) {
+			// no, make one for each recipe
+			$('#main').empty();
+
+			meal.get('recipes').forEach(function(recipe) {
+				var model = new Recipe(recipe)
+				var view = new RecipeView({model: model});
+ 				$("#main").append(view.render().el);
+ 			});
+		} else {
+			router.navigate('meals', {trigger: true});
+		}
 	});
 
 	router.on('route:defaultRoute', function(id) {
