@@ -71,8 +71,15 @@ $(function(){
 	    },
 
 	    addOne: function(meal) {
+	    	var $container = $('.c-meal-list');
 	    	var view = new MealView({model: meal});
-     		this.$("#main").append(view.render().el);
+
+	    	if (!$container.length) {
+	    		$container = $('<div class="c-meal-list">');
+	    		this.$('#main').append($container);
+	    	}
+
+     		$container.append(view.render().el);
 	    }
 	});
 	
@@ -95,7 +102,6 @@ $(function(){
 		var meal = Meals.get(id);
 
 		if (meal) {
-			// no, make one for each recipe
 			$('#main').empty();
 
 			meal.get('recipes').forEach(function(recipe) {
