@@ -4,6 +4,9 @@ $(function(){
 			'meals': 'defaultRoute',
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
+
+			'saved': 'savedMeals',
+
 			'*actions': 'defaultRoute'
 		}
 	});
@@ -32,6 +35,10 @@ $(function(){
 		template: _.template($('#meal-template').html()),
 		detailTemplate: _.template($('#meal-detail-template').html()),
 
+		events: {
+			'click .js-toggle-saved' : 'toggleSaved'
+		},
+
 		render: function(detail) {
 			if (detail) {
 				this.$el.html(this.detailTemplate(this.model.toJSON()));
@@ -40,6 +47,10 @@ $(function(){
 			}
       		
       		return this;
+      	},
+
+      	toggleSaved: function() {
+      		this.model.toggle();
       	}
 	});
 
@@ -60,14 +71,20 @@ $(function(){
       	}
 	});
 
-	var AppView = Backbone.View.extend({
+	var MealsContainerView = Backbone.View.extend({
 	    el: $("#todoapp"),
 	    initialize: function() {
 	    	this.listenTo(Meals, 'add', this.addOne);
 	    },
 
 	    addAll: function() {
-	    	Meals.each(this.addOne, this);
+	    	this.clear();
+	    	Meals.forEach(this.addOne);
+	    },
+
+	    addAllSaved: function() {
+	    	this.clear();
+	    	Meals.saved().forEach(this.addOne);
 	    },
 
 	    addOne: function(meal) {
@@ -80,10 +97,14 @@ $(function(){
 	    	}
 
      		$container.append(view.render().el);
+	    },
+
+	    clear: function() {
+	    	$('.c-meal-list').empty();
 	    }
 	});
 	
-	var App = new AppView;
+	var App = new MealsContainerView;
 
 	var router = new AppRouter;
 
@@ -130,6 +151,20 @@ $(function(){
 	    	$main.empty();
 	    	App.addAll();
 	    }
+	});
+
+	router.on('route:savedMeals', function() {
+		var savedMeals = Meals.saved();
+
+		$('#main').empty();
+
+		if (savedMeals.length) {
+			savedMeals.forEach(function(meal) {
+				App.addAllSaved();
+			});
+		} else {
+			router.navigate('meals', {trigger: true});
+		}
 	});
 
 	Backbone.history.start();
