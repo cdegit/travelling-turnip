@@ -1,6 +1,7 @@
 $(function(){
 	var AppRouter = Backbone.Router.extend({
 		routes: {
+			'meals': 'defaultRoute',
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
 			'*actions': 'defaultRoute'
@@ -85,12 +86,19 @@ $(function(){
 
 	router.on('route:defaultRoute', function(id) {
 		// Render the meals page
+		var $main = $("#main");
+		var initialMealsLength = Meals.length;
+
 		Meals.fetch();
 
 		if (!Meals.length) {
 	    	defaultData.meals.forEach(function(meal) {
 				Meals.create(meal);
 	    	});
+	    } else if (initialMealsLength) {
+	    	// Empty and rerender if we didn't just fetch
+	    	$main.empty();
+	    	App.addAll();
 	    }
 	});
 
