@@ -1,15 +1,5 @@
 $(function(){
-	var AppRouter = Backbone.Router.extend({
-		routes: {
-			'meals': 'defaultRoute',
-			'meal/:id': 'mealAbout',
-			'meal/:id/recipes': 'mealRecipes',
-
-			'saved': 'savedMeals',
-
-			'*actions': 'defaultRoute'
-		}
-	});
+	var turnip = {};
 
 	var Meal = Backbone.Model.extend({
 		toggle: function() {
@@ -104,68 +94,14 @@ $(function(){
 	    }
 	});
 	
-	var App = new MealsContainerView;
+	var MealsView = new MealsContainerView;
 
-	var router = new AppRouter;
+	turnip.MealView = MealView;
+	turnip.Recipe = Recipe;
+	turnip.RecipeView = RecipeView;
 
-	router.on('route:mealAbout', function(id) {
-		// render the detail view for that meal
-		if (Meals.get(id)) {
-			var view = new MealView({model: Meals.get(id)});
- 			$("#main").html(view.render(true).el);
- 		} else {
- 			router.navigate('meals', {trigger: true});
- 		}
-	});
+	turnip.Meals = Meals;
+	turnip.MealsView = MealsView;
 
-	router.on('route:mealRecipes', function(id) {
-		// a meal has recipes that will be displayed here
-		var meal = Meals.get(id);
-
-		if (meal) {
-			$('#main').empty();
-
-			meal.get('recipes').forEach(function(recipe) {
-				var model = new Recipe(recipe)
-				var view = new RecipeView({model: model});
- 				$("#main").append(view.render().el);
- 			});
-		} else {
-			router.navigate('meals', {trigger: true});
-		}
-	});
-
-	router.on('route:defaultRoute', function(id) {
-		// Render the meals page
-		var $main = $("#main");
-		var initialMealsLength = Meals.length;
-
-		Meals.fetch();
-
-		if (!Meals.length) {
-	    	defaultData.meals.forEach(function(meal) {
-				Meals.create(meal);
-	    	});
-	    } else if (initialMealsLength) {
-	    	// Empty and rerender if we didn't just fetch
-	    	$main.empty();
-	    	App.addAll();
-	    }
-	});
-
-	router.on('route:savedMeals', function() {
-		var savedMeals = Meals.saved();
-
-		$('#main').empty();
-
-		if (savedMeals.length) {
-			savedMeals.forEach(function(meal) {
-				App.addAllSaved();
-			});
-		} else {
-			router.navigate('meals', {trigger: true});
-		}
-	});
-
-	Backbone.history.start();
+	window.Turnip = turnip;
 });
