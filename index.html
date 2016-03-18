@@ -4,6 +4,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
 		<link href='styles.css' rel='stylesheet' type='text/css'>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script src="node_modules/underscore/underscore.js"></script>
+		<script src="backbone.js"></script>
+		<script src="backbone.localStorage.js"></script>
+		<script src="default.js"></script>
+		<script src="app.js"></script>
 		<title>Travelling Turnip Prototype</title>
 	</head>
 	<body>
@@ -24,63 +31,15 @@
 		</header>
 
 		<div class="c-content">
-			<div class="c-meal">
-				<div class="c-meal__image-container">
-					<img class="c-meal__image" src="http://placehold.it/411x150">
-					<ul class="c-meal__icons">
-						<li class="c-meal__icon"></li>
-					</ul>
-				</div>
-				<div class="c-meal__content">
-					<h2 class="c-meal__title">Rosemary Foccacia</h2>
-					<div class="c-meal__quick-info">
-						Served Nearby &bull; Recipes Available
-					</div>
-					<p class="c-meal__description">
-						Tincidunt porta? Elementum! In placerat tincidunt, mattis lorem! Eu auctor cras tristique sagittis scelerisque.
-					</p>
-				</div>
-				<div class="c-meal__actions">
-					<button>Heart</button>
-					<div class="c-button-container">
-						<a class="c-button">About</a>
-						<a class="c-button">Restaurants</a>
-						<a class="c-button">Recipes</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="c-meal">
-				<div class="c-meal__image-container">
-					<img class="c-meal__image" src="http://placehold.it/411x150">
-					<ul class="c-meal__icons">
-						<li class="c-meal__icon"></li>
-					</ul>
-				</div>
-				<div class="c-meal__content">
-					<h2 class="c-meal__title">Rosemary Foccacia</h2>
-					<div class="c-meal__quick-info">
-						Served Nearby &bull; Recipes Available
-					</div>
-					<p class="c-meal__description">
-						Tincidunt porta? Elementum! In placerat tincidunt, mattis lorem! Eu auctor cras tristique sagittis scelerisque.
-					</p>
-				</div>
-				<div class="c-meal__actions">
-					<button>Heart</button>
-					<div class="c-button-container">
-						<a class="c-button">About</a>
-						<a class="c-button">Restaurants</a>
-						<a class="c-button">Recipes</a>
-					</div>
-				</div>
+			<div id="todoapp">
+				<div id="main"></div>
 			</div>
 		</div>
 
 		<footer>
 			<nav>
 				<ul>
-					<li>Meals</li>
+					<li><a href="">Meals</a></li>
 					<li>Restaurants</li>
 					<li>Add</li>
 					<li>Phrasebook</li>
@@ -88,5 +47,57 @@
 				</ul>
 			</nav>
 		</footer>
+
+		<script type="text/template" id="meal-template">
+			<div class="c-meal__image-container" style="background-image: url(http://placehold.it/411x150);">
+				<ul class="c-meal__icons">
+					<li class="c-meal__icon"></li>
+				</ul>
+			</div>
+			<div class="c-meal__content">
+				<h2 class="c-meal__title"><%- title %></h2>
+				<div class="c-meal__quick-info">
+					Served Nearby &bull; Recipes Available
+				</div>
+				<p class="c-meal__description">
+					<%- desc %>
+				</p>
+			
+				<div class="c-meal__actions">
+					<button>Heart</button>
+					<div class="c-button-container">
+						<a href="#meal/<%- id %>" class="c-button">About</a>
+						<a class="c-button">Restaurants</a>
+						<a href="#meal/<%- id %>/recipes" class="c-button">Recipes</a>
+					</div>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="meal-detail-template">
+			<div class="c-meal__image-container" style="background-image: url(http://placehold.it/411x150);">
+				<h2 class="c-meal__detail-title"><%- title %></h2>
+				<ul class="c-meal__icons">
+					<li class="c-meal__icon"></li>
+				</ul>
+			</div>
+			<div class="c-meal__actions c--dark">
+				<div class="c-button-container">
+					<a class="c-button c--light">Restaurants</a>
+					<a href="#meal/<%- id %>/recipes" class="c-button c--light">Recipes</a>
+				</div>
+			</div>
+			<div class="c-meal__content">
+				<h3 class="c-meal__title">About</h3>
+				<p class="c-meal__description c--compressed">
+					<%- about %>
+				</p>
+
+				<h3 class="c-meal__title">History</h3>
+				<p class="c-meal__description c--compressed">
+					<%- history %>
+				</p>
+			</div>
+		</script>
 	</body>
 </html>

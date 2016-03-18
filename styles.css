@@ -15,6 +15,8 @@ header {
 
 	background-color: #335B60;
 	color: #FCFCFC;
+
+	z-index: 1;
 }
 
 header nav {
@@ -45,6 +47,10 @@ ul li {
 	float: left;
 }
 
+a {
+	text-decoration: none;
+}
+
 .c-page-title {
 	margin: 10px;
 
@@ -68,8 +74,6 @@ ul li {
 }
 
 .c-meal {
-	padding: 20px;
-
 	background-color: white;
 }
 
@@ -78,10 +82,20 @@ ul li {
 }
 
 .c-meal__image-container {
-	margin: -20px -20px 0 -20px;
+	position: relative;
+
+	height: 150px;
+
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.c-meal__content {
+	padding: 20px;
 }
 
 .c-meal__title {
+	margin-top: -5px;
 	margin-bottom: 5px;
 
 	font-weight: bold;
@@ -110,16 +124,54 @@ ul li {
 	justify-content: space-between;
 }
 
+.c-meal__actions.c--dark {
+	height: 50px;
+
+	background-color: #335B60;
+}
+
+.c-meal__actions.c--dark .c-button-container {
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.c-meal__detail-title {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+
+	margin: 0;
+
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: white;
+
+}
+
 .c-button-container {
 	display: flex;
 	justify-content: space-between;
 	flex-grow: 1;
 
-	margin-left: 40px;
+	margin-left: 20px;
 }
 
 .c-button {
 	font-weight: bold;
 	text-transform: uppercase;
+	font-size: 14px;
 	color: #E37453;
+}
+
+.c-button.c--light {
+	color: #FCFCFC;
+}
+
+.c-button.c--light + .c-button.c--light {
+	margin-left: 10px;
+}
+
+.c--compressed {
+	letter-spacing: 0px;
 }
