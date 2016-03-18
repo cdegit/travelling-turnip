@@ -18,6 +18,8 @@ $(function() {
 		if (Turnip.Meals.get(id)) {
 			var view = new Turnip.MealView({model: Turnip.Meals.get(id)});
  			$("#main").html(view.render(true).el);
+
+ 			Turnip.HeaderView.showTransparentHeader();
  		} else {
  			router.navigate('meals', {trigger: true});
  		}
@@ -35,6 +37,8 @@ $(function() {
 				var view = new Turnip.RecipeView({model: model});
  				$("#main").append(view.render().el);
  			});
+
+ 			Turnip.HeaderView.showBackHeader({title: meal.get('title') + ' Recipes'});
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
@@ -56,6 +60,8 @@ $(function() {
 	    	$main.empty();
 	    	Turnip.MealsView.addAll();
 	    }
+
+	    Turnip.HeaderView.showLocationHeader();
 	});
 
 	router.on('route:savedMeals', function() {

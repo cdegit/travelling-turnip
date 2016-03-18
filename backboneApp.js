@@ -93,15 +93,64 @@ $(function(){
 	    	$('.c-meal-list').empty();
 	    }
 	});
+
+	var HeaderView = Backbone.View.extend({
+		el: $('header'),
+		template: _.template($('#header-location-template').html()),
+		backTemplate: _.template($('#header-back-template').html()),
+		transparentTemplate: _.template($('#header-transparent-template').html()),
+
+		events: {
+			'click .js-back': 'goBack'
+		},
+
+		render: function(templateName, data) {
+			var tmp = templateName || 'template';
+			var d = data || {};
+
+			this.$el.html(this[tmp](d));
+
+			if (templateName == 'transparentTemplate') {
+				this.$el.addClass('c--transparent');
+			} else {
+				this.$el.removeClass('c--transparent');
+			}
+		},
+
+		showLocationHeader: function() {
+			this.render('template');
+		},
+
+		showBackHeader: function(data) {
+			this.render('backTemplate', data);
+		},
+
+		showTransparentHeader: function() {
+			this.render('transparentTemplate');
+		},
+
+		showSearch: function() {
+
+		},
+
+		showSavedHeader: function() {
+
+		},
+
+		goBack: function() {
+			window.history.back();
+		}
+	});
 	
-	var MealsView = new MealsContainerView;
+
+	turnip.HeaderView = new HeaderView;
 
 	turnip.MealView = MealView;
 	turnip.Recipe = Recipe;
 	turnip.RecipeView = RecipeView;
 
 	turnip.Meals = Meals;
-	turnip.MealsView = MealsView;
+	turnip.MealsView = new MealsContainerView;
 
 	window.Turnip = turnip;
 });

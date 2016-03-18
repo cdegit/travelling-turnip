@@ -72,9 +72,31 @@ a {
 	font-size: 16px;
 }
 
+.c-back-header {
+	display: flex;
+	align-items: center;
+	height: 100%;
+
+	margin: 0 10px;
+}
+
+.c-icon-button {
+	width: 36px;
+	height: 36px;
+}
+
 .c-content {
 	margin-top: 60px;
 	margin-bottom: 50px;
+}
+
+header.c--transparent {
+	background-color: transparent;
+	box-shadow: none;
+}
+
+header.c--transparent + .c-content {
+	margin-top: 0;
 }
 
 .c-meal-list {
