@@ -99,6 +99,7 @@ $(function(){
 		template: _.template($('#header-location-template').html()),
 		backTemplate: _.template($('#header-back-template').html()),
 		transparentTemplate: _.template($('#header-transparent-template').html()),
+		savedTemplate: _.template($('#header-saved-template').html()),
 
 		events: {
 			'click .js-back': 'goBack'
@@ -134,16 +135,34 @@ $(function(){
 		},
 
 		showSavedHeader: function() {
-
+			this.render('savedTemplate');
 		},
 
 		goBack: function() {
 			window.history.back();
 		}
 	});
+
+	var FooterView = Backbone.View.extend({
+		el: $('footer'),
+		events: {
+			'click li': 'updateActiveIcon'
+		},
+
+		updateActiveIcon: function(e) {
+			var $target = $(e.target);
+			var $parent = $target.parents('.c-nav-icon');
+
+			if ($parent.length) {
+				$('.c-nav-icon').removeClass('c--active');
+				$parent.addClass('c--active');
+			}
+		}
+	});
 	
 
 	turnip.HeaderView = new HeaderView;
+	turnip.FooterView = new FooterView;
 
 	turnip.MealView = MealView;
 	turnip.Recipe = Recipe;

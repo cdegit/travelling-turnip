@@ -16,20 +16,7 @@
 	</head>
 	<body>
 
-		<header>
-			<div class="c-page-title">
-				<div class="c-page-title__label">Current Location</div>
-				<div class="c-page-title__location">Rome, Italy</div>
-			</div>
-
-			<nav>
-				<ul>
-					<li>Settings</li>
-					<li>Account</li>
-					<li>Search</li>
-				</ul>
-			</nav>
-		</header>
+		<header></header>
 
 		<div class="c-content">
 			<div id="todoapp">
@@ -38,13 +25,33 @@
 		</div>
 
 		<footer>
-			<nav>
+			<nav class="c-main-nav">
 				<ul>
-					<li><a href="#meals">Meals</a></li>
-					<li>Restaurants</li>
-					<li>Add</li>
-					<li>Phrasebook</li>
-					<li><a href="#saved">My Food</a></li>
+					<li class="c-nav-icon c--active">
+						<a href="#meals">
+							<img src="img/icon_bowl.png" alt="Meals">
+						</a>
+					</li>
+					<li class="c-nav-icon">
+						<a>
+							<img src="img/icon_map.png" alt="Restaurants">
+						</a>
+					</li>
+					<li class="c-nav-icon">
+						<a>
+							<img src="img/icon_plus.png" alt="Add">
+						</a>
+					</li>
+					<li class="c-nav-icon">
+						<a>
+							<img src="img/icon_phrases.png" alt="Phrasebook">
+						</a>
+					</li>
+					<li class="c-nav-icon">
+						<a href="#saved">
+							<img src="img/icon_grey-heart.png" alt="My Food">
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</footer>
@@ -55,7 +62,7 @@
 				<div class="c-page-title__location">Rome, Italy</div>
 			</div>
 
-			<nav>
+			<nav class="c-header-icons">
 				<ul>
 					<li>Settings</li>
 					<li>Account</li>
@@ -75,6 +82,26 @@
 			<div class="c-back-header">
 				<button class="c-icon-button js-back">BACK</button>
 			</div>
+		</script>
+
+		<script type="text/template" id="header-saved-template">
+			<div class="c-page-title">
+				MY FOOD
+			</div>
+			<nav class="c-header-icons">
+				<ul>
+					<li>Settings</li>
+					<li>Account</li>
+					<li>Search</li>
+				</ul>
+			</nav>
+			<nav class="c-saved-nav">
+				<ul>
+					<li>Meals</li>
+					<li>Restaurants</li>
+					<li>Recipes</li>
+				</ul>
+			</nav>
 		</script>
 
 		<script type="text/template" id="meal-template">

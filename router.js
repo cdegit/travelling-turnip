@@ -7,6 +7,8 @@ $(function() {
 
 			'saved': 'savedMeals',
 
+			'clear': 'clearStorage',
+
 			'*actions': 'defaultRoute'
 		}
 	});
@@ -76,6 +78,11 @@ $(function() {
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
+	});
+
+	router.on('route:clearStorage', function() {
+		localStorage.clear();
+		router.navigate('meals', {trigger: true});
 	});
 
 	Backbone.history.start();
