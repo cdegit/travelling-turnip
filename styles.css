@@ -128,6 +128,26 @@ button:active {
 	outline: none;
 }
 
+.c-field {
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+
+	border: none;
+	background-color: #EEEDE8;
+}
+
+.c-field + .c-field {
+	margin-top: 10px;
+}
+
+::-webkit-input-placeholder {
+   color: #939FA6;
+   text-transform: uppercase;
+   font-style: italic;
+   font-size: 12px;
+}
+
 .c-page-title {
 	margin: 10px;
 
@@ -275,6 +295,10 @@ header.c--transparent + .c-content {
 	margin-left: 20px;
 }
 
+.c-button-container.c--right {
+	justify-content: flex-end;
+}
+
 .c-button {
 	font-weight: bold;
 	text-transform: uppercase;
@@ -290,6 +314,70 @@ header.c--transparent + .c-content {
 	margin-left: 10px;
 }
 
+.c-button.c--primary {
+	display: inline-block;
+	padding: 10px 20px;
+
+	background-color: #E37353;
+	color: white;
+
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.c-button.c--secondary {
+	display: inline-block;
+	padding: 5px 10px;
+
+	background-color: #335B60;
+	color: #EEEDE8;
+
+	text-align: center;
+	letter-spacing: 1px;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: italic;
+}
+
 .c--compressed {
 	letter-spacing: 0px;
+}
+
+.c-overlay {
+	display: none;
+}
+
+.c-overlay.c--active {
+	position: fixed;
+	top: 60px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+
+	display: block;
+
+	background-color: rgba(35, 31, 32, 0.79);
+}
+
+.c-sheet {
+	display: none;
+}
+
+.c-sheet.c--active {
+	position: fixed;
+	top: 60px;
+	left: 0px;
+	right: 0px;
+
+	display: block;
+	background-color: white;
+	padding: 20px;
+}
+
+.c-blue-text {
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bold;
+	color: #939FA6;
 }

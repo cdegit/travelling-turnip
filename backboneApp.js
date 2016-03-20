@@ -170,10 +170,26 @@ $(function(){
 			}
 		}
 	});
+
+	var ModalView = Backbone.View.extend({
+		el: $('.c-modal-container'),
+		// will need specific templates for specific modals
+		// or maybe even separate views
+
+		events: {
+			'click .c-overlay': 'closeModal'
+		},
+
+		closeModal: function() {
+			this.$el.children().removeClass('c--active');
+			window.history.back();
+		}
+	});
 	
 
 	turnip.HeaderView = new HeaderView;
 	turnip.FooterView = new FooterView;
+	turnip.ModalView = new ModalView;
 
 	turnip.MealView = MealView;
 	turnip.Recipe = Recipe;

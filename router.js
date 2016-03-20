@@ -7,6 +7,8 @@ $(function() {
 
 			'saved': 'savedMeals',
 
+			'account': 'account',
+
 			'clear': 'clearStorage',
 
 			'*actions': 'defaultRoute'
@@ -78,6 +80,12 @@ $(function() {
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
+	});
+
+	router.on('route:account', function() {
+		// show the overlay and the sheet over whatever is currently on the page
+		$('.c-overlay').addClass('c--active');
+		$('.c-sheet').addClass('c--active');
 	});
 
 	router.on('route:clearStorage', function() {

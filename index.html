@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
-		<link href='styles.css' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" rel="stylesheet" type="text/css">
+		<link href="styles.css" rel="stylesheet" type="text/css">
+		<link href="utils.css" rel="stylesheet" type="text/css">
 		<link rel="manifest" href="manifest.json">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -57,11 +58,26 @@
 			</nav>
 		</footer>
 
-		<div class="c-sheet" hidden>
-			Something something default content
+		<div class="c-modal-container">
+			<div class="c-overlay"></div>
+
+			<div class="c-sheet">
+				<img src="img/icon_guest.png" alt="Logged in as Guest">
+
+				<input type="text" class="c-field u-margin-top-md" placeholder="Username">
+				<input type="password" class="c-field" placeholder="Password">
+
+				<div class="c-button-container c--right u-margin-top-md">
+					<a class="c-button c--secondary">Log In</a>
+				</div>
+
+				<div class="u-text-center u-margin-top-lg">
+					<span class="c-blue-text">Not a member?</span>
+					<a class="c-button c--primary u-margin-top-md">Create an account</a>
+				</div>
+			</div>
 		</div>
 
-		<div class="c-overlay"></div>
 
 		<!-- Just templates from here on out -->
 
@@ -73,7 +89,7 @@
 
 			<nav class="c-header-icons">
 				<ul>
-					<li><img src="img/icon_user.png" alt="User Settings" class="c-icon"></li>
+					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
 					<li><img src="img/icon_settings.png" alt="Settings" class="c-icon"></li>
 					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
 				</ul>
@@ -99,7 +115,7 @@
 			</div>
 			<nav class="c-header-icons">
 				<ul>
-					<li><img src="img/icon_user.png" alt="User Settings" class="c-icon"></li>
+					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
 					<li><img src="img/icon_settings.png" alt="Settings" class="c-icon"></li>
 					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
 				</ul>
