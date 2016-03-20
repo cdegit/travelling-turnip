@@ -34,6 +34,7 @@ $(function(){
 				this.$el.html(this.detailTemplate(this.model.toJSON()));
 			} else {
 				this.$el.html(this.template(this.model.toJSON()));
+				this.setSavedIcon();
 			}
       		
       		return this;
@@ -41,6 +42,16 @@ $(function(){
 
       	toggleSaved: function() {
       		this.model.toggle();
+
+      		this.setSavedIcon();
+      	},
+
+      	setSavedIcon: function() {
+      		if (this.model.get('saved')) {
+      			this.$el.find('.c-icon').attr('src', 'img/icon_full-heart.png');
+      		} else {
+      			this.$el.find('.c-icon').attr('src', 'img/icon_empty-heart.png');
+      		}
       	}
 	});
 

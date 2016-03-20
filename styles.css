@@ -117,8 +117,15 @@ a {
 }
 
 button {
+	padding: 0;
+
 	background: none;
 	border: none;
+	outline: none;
+}
+
+button:active {
+	outline: none;
 }
 
 .c-page-title {
@@ -218,6 +225,7 @@ header.c--transparent + .c-content {
 .c-meal__actions {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .c-meal__actions.c--dark {
