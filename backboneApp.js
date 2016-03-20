@@ -3,14 +3,14 @@ $(function(){
 
 	var User = Backbone.Model.extend({
 		localStorage: new Backbone.LocalStorage('user-backbone'),
-		logIn: function(name) {
+		login: function(name) {
 			this.save({
 				loggedIn: true,
 				name: name
 			});
 		},
 
-		logOut: function() {
+		logout: function() {
 			this.save({
 				loggedIn: false,
 				name: ''
@@ -195,7 +195,8 @@ $(function(){
 
 		events: {
 			'click .c-overlay': 'closeModal',
-			'submit form': 'logIn'
+			'submit form': 'login',
+			'click .js-logout': 'logout'
 		},
 
 		initialize: function() {
@@ -225,11 +226,16 @@ $(function(){
 			window.history.back();
 		},
 
-		logIn: function(e) {
+		login: function(e) {
 			var username = this.$el.find('input[type=text]').val();
 			e.preventDefault();
-			turnip.User.logIn(username);
+			turnip.User.login(username);
 
+			this.closeModal();
+		},
+
+		logout: function() {
+			turnip.User.logout();
 			this.closeModal();
 		}
 	});
