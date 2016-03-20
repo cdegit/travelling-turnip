@@ -1,6 +1,23 @@
 $(function(){
 	var turnip = {};
 
+	var User = Backbone.Model.extend({
+		localStorage: new Backbone.LocalStorage('user-backbone'),
+		logIn: function(name) {
+			this.save({
+				loggedIn: true,
+				name: name
+			});
+		},
+
+		logOut: function() {
+			this.save({
+				loggedIn: false,
+				name: ''
+			});
+		}
+	});
+
 	var Meal = Backbone.Model.extend({
 		toggle: function() {
 			this.save({saved: !this.get("saved")});
@@ -11,7 +28,7 @@ $(function(){
 
 	var MealList = Backbone.Collection.extend({
 		model: Meal,
-		localStorage: new Backbone.LocalStorage("meals-backbone"),
+		localStorage: new Backbone.LocalStorage('meals-backbone'),
 		saved: function() {
 			return this.where({saved: true});
 		}
@@ -173,19 +190,51 @@ $(function(){
 
 	var ModalView = Backbone.View.extend({
 		el: $('.c-modal-container'),
-		// will need specific templates for specific modals
-		// or maybe even separate views
+		accountLoggedOutTemplate: _.template($('#account-logged-out-template').html()),
+		accountLoggedInTemplate: _.template($('#account-logged-in-template').html()),
 
 		events: {
-			'click .c-overlay': 'closeModal'
+			'click .c-overlay': 'closeModal',
+			'submit form': 'logIn'
+		},
+
+		initialize: function() {
+			turnip.User.fetch();
+		},
+
+		render: function(templateName) {
+			var tmp = templateName || 'template';
+			var data = turnip.User.toJSON();
+
+			var $container = this.$el.find('.c-sheet-container');
+			var $sheet = $('<div class="c-sheet c--active">');
+
+			$container.empty();
+
+			$sheet.append(this[tmp](data));
+			$container.append($sheet);
+		},
+
+		openModal: function(templateName) {
+			this.render(templateName);
+			this.$el.find('.c-overlay').addClass('c--active');
 		},
 
 		closeModal: function() {
-			this.$el.children().removeClass('c--active');
+			this.$el.find('.c--active').removeClass('c--active');
 			window.history.back();
+		},
+
+		logIn: function(e) {
+			var username = this.$el.find('input[type=text]').val();
+			e.preventDefault();
+			turnip.User.logIn(username);
+
+			this.closeModal();
 		}
 	});
 	
+	turnip.User = new User({id: 1});
 
 	turnip.HeaderView = new HeaderView;
 	turnip.FooterView = new FooterView;

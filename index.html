@@ -60,22 +60,7 @@
 
 		<div class="c-modal-container">
 			<div class="c-overlay"></div>
-
-			<div class="c-sheet">
-				<img src="img/icon_guest.png" alt="Logged in as Guest">
-
-				<input type="text" class="c-field u-margin-top-md" placeholder="Username">
-				<input type="password" class="c-field" placeholder="Password">
-
-				<div class="c-button-container c--right u-margin-top-md">
-					<a class="c-button c--secondary">Log In</a>
-				</div>
-
-				<div class="u-text-center u-margin-top-lg">
-					<span class="c-blue-text">Not a member?</span>
-					<a class="c-button c--primary u-margin-top-md">Create an account</a>
-				</div>
-			</div>
+			<div class="c-sheet-container"></div>
 		</div>
 
 
@@ -187,6 +172,29 @@
 		</script>
 
 		<script type="text/template" id="recipe-detail-template">
+		</script>
+
+		<script type="text/template" id="account-logged-out-template">
+			<img src="img/icon_guest.png" alt="Logged in as Guest">
+
+			<form>
+				<input type="text" class="c-field u-margin-top-md" placeholder="Username">
+				<input type="password" class="c-field" placeholder="Password">
+
+				<div class="c-button-container c--right u-margin-top-md">
+					<input type="submit" class="c-button c--secondary" value="Log In">
+				</div>
+			</form>
+
+			<div class="u-text-center u-margin-top-lg">
+				<span class="c-blue-text">Not a member?</span>
+				<a class="c-button c--primary u-margin-top-md">Create an account</a>
+			</div>
+		</script>
+
+		<script type="text/template" id="account-logged-in-template">
+			Logged in as <%- name %>
+			<a class="c-button c--secondary u-margin-top-md">Log out</a>
 		</script>
 	</body>
 </html>

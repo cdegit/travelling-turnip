@@ -83,9 +83,11 @@ $(function() {
 	});
 
 	router.on('route:account', function() {
-		// show the overlay and the sheet over whatever is currently on the page
-		$('.c-overlay').addClass('c--active');
-		$('.c-sheet').addClass('c--active');
+		if (Turnip.User.get('loggedIn')) {
+			Turnip.ModalView.openModal('accountLoggedInTemplate');
+		} else {
+			Turnip.ModalView.openModal('accountLoggedOutTemplate');
+		}
 	});
 
 	router.on('route:clearStorage', function() {

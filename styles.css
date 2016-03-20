@@ -116,7 +116,7 @@ a {
 	text-decoration: none;
 }
 
-button {
+button, [type=submit] {
 	padding: 0;
 
 	background: none;
