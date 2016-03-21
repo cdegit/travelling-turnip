@@ -495,3 +495,15 @@ header.c--transparent + .c-content {
 	width: 120px;
 	height: 60px;
 }
+
+.c-welcome__wrapper {
+	position: fixed;
+    top: 0;
+    bottom: 0;
+    
+    z-index: 1;
+    
+	padding: 20px;
+
+    background-color: white;
+}

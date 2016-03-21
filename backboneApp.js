@@ -201,12 +201,31 @@ $(function(){
 		el: $('.c-onboarding'),
 		template: _.template($('#onboarding-template').html()),
 
-		// shouldn't actually take us to the log in page
-		// then set the onboarded var
+		render: function() {
+			this.$el.html(this.template());
+			return this.$el;
+		}
+	});
+
+	var WelcomeView = Backbone.View.extend({
+		el: $('.c-welcome'),
+		template: _.template($('#welcome-template').html()),
+
+		events: {
+			'submit form': 'login'
+		},
 
 		render: function() {
 			this.$el.html(this.template());
 			return this.$el;
+		},
+
+		login: function(e) {
+			var username = this.$el.find('input[type=text]').val();
+			e.preventDefault();
+			turnip.User.login(username);
+
+			turnip.Router.navigate('meals', {trigger: true});
 		}
 	});
 
@@ -346,6 +365,7 @@ $(function(){
 	turnip.User = new User({id: 1});
 
 	turnip.OnboardingView = new OnboardingView;
+	turnip.WelcomeView = new WelcomeView;
 	turnip.HeaderView = new HeaderView;
 	turnip.FooterView = new FooterView;
 	turnip.ModalView = new ModalView;

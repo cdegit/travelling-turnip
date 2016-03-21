@@ -69,6 +69,8 @@
 
 		<div class="c-onboarding"></div>
 
+		<div class="c-welcome"></div>
+
 		<!-- Just templates from here on out -->
 
 		<script type="text/template" id="onboarding-template">
@@ -76,21 +78,44 @@
 				<div class="m-scooch-inner">
 					<div class="m-item m-active" style="background-image: url(img/onboardinga.jpg)">
 			    		<img src="img/onboarding_bottom1.png" class="u-max-full-width">
-			    		<a href="#meals" class="c-onboarding__skip"></a>
+			    		<a href="#welcome" class="c-onboarding__skip"></a>
 				    </div>
 				    <div class="m-item" style="background-image: url(img/onboardingb.jpg)">
 				      	<img src="img/onboarding_bottom2.png" class="u-max-full-width">
-				      	<a href="#meals" class="c-onboarding__skip"></a>
+				      	<a href="#welcome" class="c-onboarding__skip"></a>
 				    </div>
 				    <div class="m-item" style="background-image: url(img/onboardingc.jpg)">
 				      	<img src="img/onboarding_bottom3.png" class="u-max-full-width">
-				      	<a href="#meals" class="c-onboarding__skip"></a>
+				      	<a href="#welcome" class="c-onboarding__skip"></a>
 				    </div>
 				    <div class="m-item" style="background-image: url(img/onboardingd.jpg)">
 				      	<img src="img/onboarding_bottom4.png" class="u-max-full-width">
-				      	<a href="#meals" class="c-onboarding__skip"></a>
+				      	<a href="#welcome" class="c-onboarding__skip"></a>
 				    </div>
 				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="welcome-template">
+			<div class="c-welcome__wrapper">
+			<img src="img/welcome-turnip.png" class="u-max-full-width" alt="Welcome to the Travelling Turnip">
+
+			<form>
+				<input type="text" class="c-field u-margin-top-md" placeholder="Username">
+				<input type="password" class="c-field" placeholder="Password">
+
+				<div class="c-button-container c--right u-margin-top-md">
+					<input type="submit" class="c-button c--secondary" value="Log In">
+				</div>
+			</form>
+
+			<div class="u-text-center u-margin-top-lg">
+				<span class="c-blue-text">Not a member?</span>
+				<a class="c-button c--primary u-margin-top-md" href="#create-account">Create an account</a>
+				<div class="u-margin-top-lg">
+					<a href="#meals" class="c-button">Continue as guest</a>
+				</div>
+			</div>
 			</div>
 		</script>
 

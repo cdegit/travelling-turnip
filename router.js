@@ -13,6 +13,7 @@ $(function() {
 			'account': 'account',
 
 			'onboarding': 'onboarding',
+			'welcome': 'welcome',
 			'clear': 'clearStorage',
 
 			'*actions': 'defaultRoute'
@@ -53,6 +54,11 @@ $(function() {
 	});
 
 	router.on('route:defaultRoute', function(id) {
+		if (!localStorage.getItem('onboarded')) {
+			router.navigate('onboarding', {trigger: true});
+			return;
+		}
+
 		// Render the meals page
 		var $main = $("#main");
 		var initialMealsLength = Turnip.Meals.length;
@@ -73,6 +79,7 @@ $(function() {
 	    Turnip.FooterView.setIcon('meals');
 
 	    $('.c-onboarding').empty();
+	    $('.c-welcome').empty();
 	});
 
 	router.on('route:savedMeals', function() {
@@ -125,10 +132,16 @@ $(function() {
 		$('.m-scooch').on('beforeSlide', function(e, previousSlide, nextSlide) {
 			// Take to the log in page
 			if (previousSlide == 4 && nextSlide == 4) {
-				router.navigate('meals', {trigger: true});
+				router.navigate('welcome', {trigger: true});
 			}
-
 		});
+	});
+
+	router.on('route:welcome', function() {
+		Turnip.WelcomeView.render();
+		$('.c-onboarding').empty();
+
+		localStorage.setItem('onboarded', true);
 	});
 
 	router.on('route:clearStorage', function() {
