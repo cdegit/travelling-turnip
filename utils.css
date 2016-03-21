@@ -21,3 +21,15 @@
 .u-max-full-width {
 	max-width: 100%;
 }
+
+.c-arrange {
+	display: flex;
+}
+
+.c-arrange.c--space-between {
+	justify-content: space-between;
+}
+
+.c-arrange.c--center {
+	align-items: center;
+}

@@ -14,9 +14,11 @@ var defaultData = {
 		about: 'Focaccia, known and loved in Italy and abroad, is yeasted flat bread which belongs essentially to the northern shores of the Mediterranean and has its origin in classical antiquity. Early versions were cooked on the hearth of a hot fire, or on a heated tile or earthenware disk, like the related flatbreads. Bakers often puncture the bread with a knife to relieve bubbling on the surface of the bread.',
 		history: 'Many regions of Italy have an inventive range of flavorings they add to their focaccia. For many centuries it has had an association with Christmas Eve and Epiphany. In the Italian context one thing is',
 		recipes: [{
+			id: 1,
+			mealId: 1,
 			title: 'Nonna\'s Focaccia',
 			prepTime: '10 mins',
-			cookTime: '10 mins',
+			cookTime: '20 mins',
 			excerpt: '1 ENVELOPE (2 1/4 TSPS) ACTIVE DRY YEAST...',
 			saved: false,
 			restrictions: {
@@ -27,6 +29,24 @@ var defaultData = {
 			ingredients: [{
 				eng: '2 tablespoons red-wine vinegar',
 				ital: '2 cucchiai di aceto di vino rosso'
+			},{
+				eng: '1 tablespoon extra-virgin olive oil',
+				ital: 'olio d\'oliva 1 cucchiaio di extra vergine'
+			},{
+				eng: '2 tablespoons grated Parmesan',
+				ital: '2 cucchiai di parmigiano grattugiato'
+			},{
+				eng: '1 teaspoon honey',
+				ital: '1 cucchiaino di miele'
+			},{
+				eng: '2 cups corn kernels (from 3 ears corn)',
+				ital: 'noccioli di 2 tazze di mais (da 3 spighe di mais)'
+			},{
+				eng: '1/2 English cucumber, sliced into 1/4-inch half-moons',
+				ital: '1/2 cetriolo inglese, tagliato in 1/4-inch mezze lune'
+			},{
+				eng: '1 small head radicchio, cut into 1-inch pieces',
+				ital: '1 piccolo radicchio testa, tagliato in pezzi da 1 pollice'
 			}]
 		}]
 	},{
@@ -44,6 +64,8 @@ var defaultData = {
 		about: 'Focaccia, known and loved in Italy and abroad, is yeasted flat bread which belongs essentially to the northern shores of the Mediterranean and has its origin in classical antiquity. Early versions were cooked on the hearth of a hot fire, or on a heated tile or earthenware disk, like the related flatbreads. Bakers often puncture the bread with a knife to relieve bubbling on the surface of the bread.',
 		history: 'Many regions of Italy have an inventive range of flavorings they add to their focaccia. For many centuries it has had an association with Christmas Eve and Epiphany. In the Italian context one thing is',
 		recipes: [{
+			id: 1,
+			mealId: 2,
 			title: 'Nonna\'s Focaccia',
 			prepTime: '10 mins',
 			cookTime: '10 mins',

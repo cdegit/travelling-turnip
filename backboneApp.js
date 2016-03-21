@@ -78,14 +78,70 @@ $(function(){
 		template: _.template($('#recipe-template').html()),
 		detailTemplate: _.template($('#recipe-detail-template').html()),
 
+		events: {
+			'click .c-recipe__list-view': 'showDetailView',
+			'click .js-toggle-saved': 'toggleSaved'
+		},
+
 		render: function(detail) {
 			if (detail) {
 				this.$el.html(this.detailTemplate(this.model.toJSON()));
 			} else {
 				this.$el.html(this.template(this.model.toJSON()));
 			}
+
+			this.toggleSavedIcon();
       		
       		return this;
+      	},
+
+      	showDetailView: function() {
+      		turnip.Router.navigate('meal/' + this.model.get('mealId') + '/recipes/' + this.model.get('id'), {trigger: true});
+      	},
+
+      	isSaved: function() {
+      		var that = this;
+      		var saved = turnip.User.get('savedRecipes');
+
+      		if (!saved) {
+      			saved = [];
+      		}
+
+      		// see if this recipe is already in there
+      		var entryInSaved = saved.find(function(recipe) {
+      			return recipe.id == that.model.get('id') && recipe.mealId == that.model.get('mealId');
+      		});
+
+      		return entryInSaved;
+      	},
+
+      	toggleSaved: function() {
+      		var saved = turnip.User.get('savedRecipes');
+      		var entryInSaved = this.isSaved();
+
+      		if (!saved) {
+      			saved = [];
+      		}
+
+      		if (entryInSaved) {
+      			// remove from saved
+      			saved.splice(saved.indexOf(entryInSaved), 1);
+      		} else {
+      			saved.push(this.model);
+      		}
+
+      		turnip.User.set('savedRecipes', saved);
+      		turnip.User.save();
+
+      		this.toggleSavedIcon();
+      	},
+
+      	toggleSavedIcon: function() {
+      		if (this.isSaved()) {
+      			this.$el.find('.c-icon').attr('src', 'img/icon_full-heart.png');
+      		} else {
+      			this.$el.find('.c-icon').attr('src', 'img/icon_empty-heart.png');
+      		}
       	}
 	});
 

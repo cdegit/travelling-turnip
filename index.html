@@ -5,6 +5,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" rel="stylesheet" type="text/css">
 		<link href="styles.css" rel="stylesheet" type="text/css">
 		<link href="utils.css" rel="stylesheet" type="text/css">
+		<link href="typography.css" rel="stylesheet" type="text/css">
 		<link rel="manifest" href="manifest.json">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -241,11 +242,36 @@
 		</script>
 
 		<script type="text/template" id="recipe-template">
-			<h2 class="c-recipe__title"><%- title %></h2>
-			<div class="c-recipe__excerpt"><%- excerpt %></div>
+			<div class="c-recipe__list-view">
+				<h2 class="c-recipe__title"><%- title %></h2>
+				<div class="c-recipe__excerpt"><%- excerpt %></div>
+			</div>
 		</script>
 
 		<script type="text/template" id="recipe-detail-template">
+			<div class="c-meal__image-container" style="background-image: url(http://placehold.it/411x150);">
+				<ul class="c-meal__icons">
+					<li class="c-meal__icon"></li>
+				</ul>
+			</div>
+			<div class="c-recipe__content">
+				<div class="c-arrange c--space-between c--center">
+					<div class="c-recipe__times t-grey t--upper">
+						<div>Prep time: <%- prepTime %></div>
+						<div>Cook time: <%- cookTime %></div>
+					</div>
+					<button class="js-toggle-saved"><img src="img/icon_empty-heart.png" class="c-icon"></button>
+				</div>
+
+				<h2 class="c-recipe__title u-margin-top-lg">Ingredients</h2>
+
+				<% _.each(ingredients, function(ingredient){ %>
+					<div class="c-recipe__ingredient u-margin-top-md">
+						<div class="t-body"><%- ingredient.eng %></div>
+						<div class="t-grey"><%- ingredient.ital %></div>
+					</div>
+				<% }); %>
+			</div>
 		</script>
 
 		<script type="text/template" id="account-logged-out-template">

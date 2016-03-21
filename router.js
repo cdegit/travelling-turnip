@@ -4,6 +4,7 @@ $(function() {
 			'meals': 'defaultRoute',
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
+			'meal/:id/recipes/:rid': 'recipeDetail',
 
 			'phrases': 'phrases',
 			'phrases/new': 'createPhrase',
@@ -56,6 +57,25 @@ $(function() {
 		}
 	});
 
+	router.on('route:recipeDetail', function(mealId, recipeId) {
+		var meal = Turnip.Meals.get(mealId);
+
+		if (meal) {
+			var recipe = meal.get('recipes').filter(function(recipe) {
+				return recipe.id == recipeId;
+			})[0];
+
+			var model = new Turnip.Recipe(recipe);
+			var view = new Turnip.RecipeView({model: model});
+
+			$("#main").html(view.render(true).el);
+
+			Turnip.HeaderView.showBackHeader({title: model.get('title')});
+		} else {
+			router.navigate('meals', {trigger: true});
+		}
+	});
+
 	router.on('route:defaultRoute', function(id) {
 		if (!localStorage.getItem('onboarded')) {
 			router.navigate('onboarding', {trigger: true});
@@ -97,6 +117,20 @@ $(function() {
 			Turnip.HeaderView.showSavedHeader();
 		} else {
 			router.navigate('meals', {trigger: true});
+		}
+	});
+
+	router.on('route:savedRecipes', function() {
+		var savedRecipes = Turnip.User.get('savedRecipes');
+
+		$('#main').empty();
+
+		if (savedRecipes.length) {
+			savedRecipes.forEach(function(recipe) {
+				var model = new Turnip.Recipe(recipe);
+				var view = new Turnip.RecipeView({model: model});
+ 				$("#main").append(view.render().el);
+			});
 		}
 	});
 

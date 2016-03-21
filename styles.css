@@ -303,10 +303,9 @@ header.c--transparent + .c-content {
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	color: white;
-
 }
 
-.c-recipe {
+.c-recipe__list-view {
 	height: 80px;
 	padding: 20px;
 
@@ -318,6 +317,10 @@ header.c--transparent + .c-content {
 	font-style: italic;
 	color: #939FA6;
 	letter-spacing: 1px;
+}
+
+.c-recipe__content {
+	padding: 20px;
 }
 
 .c-button-container {
