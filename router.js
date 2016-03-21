@@ -58,13 +58,13 @@ $(function() {
 
 		Turnip.Meals.fetch();
 
+		$main.empty();
+
 		if (!Turnip.Meals.length) {
 	    	defaultData.meals.forEach(function(meal) {
 				Turnip.Meals.create(meal);
 	    	});
-	    } else if (initialMealsLength) {
-	    	// Empty and rerender if we didn't just fetch
-	    	$main.empty();
+	    } else {
 	    	Turnip.MealsView.addAll();
 	    }
 

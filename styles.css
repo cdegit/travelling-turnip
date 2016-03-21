@@ -425,7 +425,7 @@ header.c--transparent + .c-content {
 }
 
 .js-create-container {
-	display: none;
+	/*display: none;*/
 }
 
 .js-create-container.c--active {

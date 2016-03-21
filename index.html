@@ -24,15 +24,6 @@
 			<div id="todoapp">
 				<div id="main"></div>
 			</div>
-
-			<div class="js-phrases-view c-phrases-view">
-				<div class="js-create-container"></div>
-				<div class="js-phrases-list">
-					<a href="#phrases/new">
-						<img src="img/button_translate.png" alt="Translate a new phrase" class="u-max-full-width u-margin-bottom-md">
-					</a>
-				</div>
-			</div>
 		</div>
 
 		<footer>
@@ -227,6 +218,17 @@
 			<a class="c-button c--secondary u-margin-top-md js-logout">Log out</a>
 		</script>
 
+		<script type="text/template" id="phrase-list-template">
+			<div class="js-phrases-view c-phrases-view">
+				<div class="js-create-container"></div>
+				<div class="js-phrases-list">
+					<a href="#phrases/new">
+						<img src="img/button_translate.png" alt="Translate a new phrase" class="u-max-full-width u-margin-bottom-md">
+					</a>
+				</div>
+			</div>
+		</script>
+
 		<script type="text/template" id="phrase-template">
 			<div class="c-phrase">
 				<div class="c-phrase__title">
@@ -244,21 +246,23 @@
 		</script>
 
 		<script type="text/template" id="phrases-new-template">
-			<span class="c-recipe__title">What do you want to say?</span>
+			<div class="js-phrases-view c-phrases-view">
+				<span class="c-recipe__title">What do you want to say?</span>
 
-			<form class="u-margin-top-md">
-				<% _.each(phrases, function(phrase, index){ %>
-					<label class="c-checkbox-field">
-						<span class="c-checkbox-label"><%- phrase.english %></span>
-						<input type="checkbox" phrase-index="<%- index %>">
-						<span class="c-checkbox-icon"></span>
-					</label>
-				<% }); %>
+				<form class="u-margin-top-md">
+					<% _.each(phrases, function(phrase, index){ %>
+						<label class="c-checkbox-field">
+							<span class="c-checkbox-label"><%- phrase.english %></span>
+							<input type="checkbox" phrase-index="<%- index %>">
+							<span class="c-checkbox-icon"></span>
+						</label>
+					<% }); %>
 
-				<div class="u-text-center u-margin-top-md">
-					<input type="submit" class="c-button c--primary" value="Create phrase">
-				</div>
-			</form>
+					<div class="u-text-center u-margin-top-md">
+						<input type="submit" class="c-button c--primary" value="Create phrase">
+					</div>
+				</form>
+			</div>
 		</script>
 	</body>
 </html>

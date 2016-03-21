@@ -89,7 +89,9 @@ $(function(){
       	}
 	});
 
-	var Phrase = Backbone.Model.extend();
+	var Phrase = Backbone.Model.extend({
+		localStorage: new Backbone.LocalStorage('phrases-backbone')
+	});
 
 	var PhraseList = Backbone.Collection.extend({
 		model: Phrase,
@@ -99,7 +101,8 @@ $(function(){
 	var Phrases = new PhraseList;
 
 	var PhrasesContainerView = Backbone.View.extend({
-		el: $('.js-phrases-view'),
+		el: $('#main'),
+		template: _.template($('#phrase-list-template').html()),
 		newTemplate: _.template($('#phrases-new-template').html()),
 		phraseTemplate: _.template($('#phrase-template').html()),
 		phraseComponents: [],
@@ -110,29 +113,28 @@ $(function(){
 
 	    initialize: function() {
 	    	this.listenTo(Phrases, 'add', this.addOne);
-
-	    	Phrases.fetch();
 	    },
 
 	    render: function() {
-	    	$('.js-create-container').removeClass('c--active');
+			Phrases.fetch();
+
+	    	this.$el.html(this.template({}));
+	    	
+	    	this.addAll();
 	    },
 
 	    addOne: function(phrase) {
 	    	$('.js-phrases-list').append(this.phraseTemplate(phrase.toJSON()));
+	    },
 
-	    	// Go back to the phrase list
-	    	if (turnip.Router) {
-	    		turnip.Router.navigate('phrases', {trigger: true});
-	    	}
+	    addAll: function() {
+	    	Phrases.each(this.addOne, this);
 	    },
 
 	    renderNewPage: function() {
-	    	this.$el.find('.js-create-container').html(this.newTemplate({
+	    	this.$el.html(this.newTemplate({
 	    		phrases: defaultData.phraseComponents
 	    	}));
-
-	    	$('.js-create-container').addClass('c--active');
 	    },
 
 	    addNewPhrase: function(e) {
@@ -152,6 +154,10 @@ $(function(){
 
 	    	Phrases.add(phrase);
 	    	Phrases.sync('create', phrase);
+
+	    	if (turnip.Router) {
+	    		turnip.Router.navigate('phrases', {trigger: true});
+	    	}
 	    }
 	});
 
