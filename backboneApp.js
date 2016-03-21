@@ -239,7 +239,8 @@ $(function(){
 		phrasesCreateTemplate: _.template($('#header-phrases-create-template').html()),
 
 		events: {
-			'click .js-back': 'goBack'
+			'click .js-back': 'goBack',
+			'click .c-saved-nav a': 'selectSavedTab'
 		},
 
 		render: function(templateName, data) {
@@ -285,6 +286,11 @@ $(function(){
 
 		goBack: function() {
 			window.history.back();
+		},
+
+		selectSavedTab: function(e) {
+			$('.c-saved-nav .c--active').removeClass('c--active');
+			$(e.target).parents('li').addClass('c--active');
 		}
 	});
 

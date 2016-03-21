@@ -9,6 +9,9 @@ $(function() {
 			'phrases/new': 'createPhrase',
 
 			'saved': 'savedMeals',
+			'saved/meals': 'savedMeals',
+			'saved/restaurants': 'savedRestaurants',
+			'saved/recipes': 'savedRecipes',
 
 			'account': 'account',
 
@@ -91,6 +94,7 @@ $(function() {
 			savedMeals.forEach(function(meal) {
 				Turnip.MealsView.addAllSaved();
 			});
+			Turnip.HeaderView.showSavedHeader();
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
