@@ -69,6 +69,7 @@ $(function() {
 	    }
 
 	    Turnip.HeaderView.showLocationHeader();
+	    Turnip.FooterView.setIcon('meals');
 	});
 
 	router.on('route:savedMeals', function() {
@@ -115,7 +116,7 @@ $(function() {
 
 	router.on('route:clearStorage', function() {
 		localStorage.clear();
-		router.navigate('meals', {trigger: true});
+		location.href = location.href.split('#')[0];
 	});
 
 	Backbone.history.start();

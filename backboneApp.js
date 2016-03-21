@@ -113,10 +113,13 @@ $(function(){
 
 	    initialize: function() {
 	    	this.listenTo(Phrases, 'add', this.addOne);
+	    	this.selectedPhrases = new PhraseList;
 	    },
 
 	    render: function() {
-			Phrases.fetch();
+	    	if (!this.selectedPhrases.length) {
+				this.selectedPhrases.fetch();
+			}
 
 	    	this.$el.html(this.template({}));
 	    	
@@ -124,11 +127,11 @@ $(function(){
 	    },
 
 	    addOne: function(phrase) {
-	    	$('.js-phrases-list').append(this.phraseTemplate(phrase.toJSON()));
+	    	$('.js-phrases-list').prepend(this.phraseTemplate(phrase.toJSON()));
 	    },
 
 	    addAll: function() {
-	    	Phrases.each(this.addOne, this);
+	    	this.selectedPhrases.each(this.addOne, this);
 	    },
 
 	    renderNewPage: function() {
@@ -149,11 +152,11 @@ $(function(){
 
 	    	var phrase = new Phrase({
 	    		phrases: phrases,
-	    		id: Phrases.length
+	    		id: this.selectedPhrases.length
 	    	});
 
-	    	Phrases.add(phrase);
-	    	Phrases.sync('create', phrase);
+	    	this.selectedPhrases.add(phrase);
+	    	this.selectedPhrases.sync('create', phrase);
 
 	    	if (turnip.Router) {
 	    		turnip.Router.navigate('phrases', {trigger: true});
