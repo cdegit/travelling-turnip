@@ -89,6 +89,72 @@ $(function(){
       	}
 	});
 
+	var Phrase = Backbone.Model.extend();
+
+	var PhraseList = Backbone.Collection.extend({
+		model: Phrase,
+		localStorage: new Backbone.LocalStorage('phrases-backbone')
+	});
+
+	var Phrases = new PhraseList;
+
+	var PhrasesContainerView = Backbone.View.extend({
+		el: $('.js-phrases-view'),
+		newTemplate: _.template($('#phrases-new-template').html()),
+		phraseTemplate: _.template($('#phrase-template').html()),
+		phraseComponents: [],
+
+		events: {
+			'submit form': 'addNewPhrase'
+		},
+
+	    initialize: function() {
+	    	this.listenTo(Phrases, 'add', this.addOne);
+
+	    	Phrases.fetch();
+	    },
+
+	    render: function() {
+	    	$('.js-create-container').removeClass('c--active');
+	    },
+
+	    addOne: function(phrase) {
+	    	$('.js-phrases-list').append(this.phraseTemplate(phrase.toJSON()));
+
+	    	// Go back to the phrase list
+	    	if (turnip.Router) {
+	    		turnip.Router.navigate('phrases', {trigger: true});
+	    	}
+	    },
+
+	    renderNewPage: function() {
+	    	this.$el.find('.js-create-container').html(this.newTemplate({
+	    		phrases: defaultData.phraseComponents
+	    	}));
+
+	    	$('.js-create-container').addClass('c--active');
+	    },
+
+	    addNewPhrase: function(e) {
+	    	var $checked = this.$el.find(':checked');
+	    	var phrases = [];
+
+	    	e.preventDefault();
+
+	    	$checked.each(function(index, phrase) {
+	    		phrases.push(defaultData.phraseComponents[$(phrase).attr('phrase-index')]);
+	    	});
+
+	    	var phrase = new Phrase({
+	    		phrases: phrases,
+	    		id: Phrases.length
+	    	});
+
+	    	Phrases.add(phrase);
+	    	Phrases.sync('create', phrase);
+	    }
+	});
+
 	var MealsContainerView = Backbone.View.extend({
 	    el: $("#todoapp"),
 	    initialize: function() {
@@ -128,6 +194,8 @@ $(function(){
 		backTemplate: _.template($('#header-back-template').html()),
 		transparentTemplate: _.template($('#header-transparent-template').html()),
 		savedTemplate: _.template($('#header-saved-template').html()),
+		phrasesTemplate: _.template($('#header-phrases-template').html()),
+		phrasesCreateTemplate: _.template($('#header-phrases-create-template').html()),
 
 		events: {
 			'click .js-back': 'goBack'
@@ -166,6 +234,14 @@ $(function(){
 			this.render('savedTemplate');
 		},
 
+		showPhrasesHeader: function() {
+			this.render('phrasesTemplate');
+		},
+
+		showPhrasesCreateHeader: function() {
+			this.render('phrasesCreateTemplate');
+		},
+
 		goBack: function() {
 			window.history.back();
 		}
@@ -185,6 +261,11 @@ $(function(){
 				$('.c-nav-icon').removeClass('c--active');
 				$parent.addClass('c--active');
 			}
+		},
+
+		setIcon: function(name) {
+			$('.c-nav-icon').removeClass('c--active');
+			this.$el.find('.c--' + name).addClass('c--active');
 		}
 	});
 
@@ -252,6 +333,9 @@ $(function(){
 
 	turnip.Meals = Meals;
 	turnip.MealsView = new MealsContainerView;
+
+	turnip.Phrases = Phrases;
+	turnip.PhrasesView = new PhrasesContainerView;
 
 	window.Turnip = turnip;
 });

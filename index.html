@@ -24,32 +24,41 @@
 			<div id="todoapp">
 				<div id="main"></div>
 			</div>
+
+			<div class="js-phrases-view c-phrases-view">
+				<div class="js-create-container"></div>
+				<div class="js-phrases-list">
+					<a href="#phrases/new">
+						<img src="img/button_translate.png" alt="Translate a new phrase" class="u-max-full-width u-margin-bottom-md">
+					</a>
+				</div>
+			</div>
 		</div>
 
 		<footer>
 			<nav class="c-main-nav">
 				<ul>
-					<li class="c-nav-icon c--active">
+					<li class="c-nav-icon c--active c--meals">
 						<a href="#meals">
 							<img src="img/icon_bowl.png" alt="Meals" class="c-icon">
 						</a>
 					</li>
-					<li class="c-nav-icon">
+					<li class="c-nav-icon c--restaurants">
 						<a>
 							<img src="img/icon_map.png" alt="Restaurants" class="c-icon">
 						</a>
 					</li>
-					<li class="c-nav-icon">
+					<li class="c-nav-icon c--add">
 						<a>
 							<img src="img/icon_plus.png" alt="Add" class="c-icon">
 						</a>
 					</li>
-					<li class="c-nav-icon">
-						<a>
+					<li class="c-nav-icon c--phrasebook">
+						<a href="#phrases">
 							<img src="img/icon_phrases.png" alt="Phrasebook" class="c-icon">
 						</a>
 					</li>
-					<li class="c-nav-icon">
+					<li class="c-nav-icon c--my-food">
 						<a href="#saved">
 							<img src="img/icon_grey-heart.png" alt="My Food" class="c-icon">
 						</a>
@@ -112,6 +121,27 @@
 					<li>Recipes</li>
 				</ul>
 			</nav>
+		</script>
+
+		<script type="text/template" id="header-phrases-template">
+			<div class="c-page-title">
+				Phrasebook
+			</div>
+
+			<nav class="c-header-icons">
+				<ul>
+					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
+					<li><img src="img/icon_settings.png" alt="Settings" class="c-icon"></li>
+					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
+				</ul>
+			</nav>
+		</script>
+
+		<script type="text/template" id="header-phrases-create-template">
+			<div class="c-back-header">
+				<button class="c-icon-button js-back"><img src="img/icon_back.png" class="c-icon"></button>
+				<div class="c-page-title">Phrasebook</div>
+			</div>
 		</script>
 
 		<script type="text/template" id="meal-template">
@@ -195,6 +225,40 @@
 		<script type="text/template" id="account-logged-in-template">
 			Logged in as <%- name %>
 			<a class="c-button c--secondary u-margin-top-md js-logout">Log out</a>
+		</script>
+
+		<script type="text/template" id="phrase-template">
+			<div class="c-phrase">
+				<div class="c-phrase__title">
+					<% _.each(phrases, function(phrase){ %>
+						<%- phrase.english %>
+					<% }); %>
+				</div>
+
+				<div class="c-phrase__subtitle">
+					<% _.each(phrases, function(phrase){ %>
+						<%- phrase.italian %>
+					<% }); %>
+				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="phrases-new-template">
+			<span class="c-recipe__title">What do you want to say?</span>
+
+			<form class="u-margin-top-md">
+				<% _.each(phrases, function(phrase, index){ %>
+					<label class="c-checkbox-field">
+						<span class="c-checkbox-label"><%- phrase.english %></span>
+						<input type="checkbox" phrase-index="<%- index %>">
+						<span class="c-checkbox-icon"></span>
+					</label>
+				<% }); %>
+
+				<div class="u-text-center u-margin-top-md">
+					<input type="submit" class="c-button c--primary" value="Create phrase">
+				</div>
+			</form>
 		</script>
 	</body>
 </html>

@@ -5,6 +5,9 @@ $(function() {
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
 
+			'phrases': 'phrases',
+			'phrases/new': 'createPhrase',
+
 			'saved': 'savedMeals',
 
 			'account': 'account',
@@ -80,6 +83,26 @@ $(function() {
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
+	});
+
+	router.on('route:phrases', function() {
+		var $main = $('#main');
+		$main.empty();
+
+		Turnip.PhrasesView.render();
+		Turnip.FooterView.setIcon('phrasebook');
+		Turnip.HeaderView.showPhrasesHeader();
+	});
+
+	router.on('route:createPhrase', function() {
+		var $main = $('#main');
+		$main.empty();
+
+		Turnip.PhrasesView.renderNewPage();
+
+		// should probably be using this instead
+		Turnip.FooterView.setIcon('phrasebook');
+		Turnip.HeaderView.showPhrasesCreateHeader();
 	});
 
 	router.on('route:account', function() {

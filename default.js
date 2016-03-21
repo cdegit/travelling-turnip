@@ -59,5 +59,36 @@ var defaultData = {
 				ital: '2 cucchiai di aceto di vino rosso'
 			}]
 		}]
+	}],
+	phraseComponents: [{
+		english: 'I\'m vegan',
+		italian: 'Io sono vegano'
+	},{
+		english: 'I\'m vegetarian',
+		italian: 'Io sono vegetaliano'
+	},{
+		english: 'Organic only, please',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'Gluten-free only, please',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'Can I make this vegan?',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'Can I get this without meat?',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'Can I pack this to go?',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'How long do I need to wait for my meal?',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'How long do I need to wait for a table?',
+		italian: 'Italian translation goes here'
+	},{
+		english: 'The bill, please',
+		italian: 'Italian translation goes here'
 	}]
 };

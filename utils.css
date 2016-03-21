@@ -10,6 +10,14 @@
 	margin-top: 20px;
 }
 
+.u-margin-bottom-md {
+	margin-bottom: 10px;
+}
+
 .u-text-center {
 	text-align: center;
+}
+
+.u-max-full-width {
+	max-width: 100%;
 }
