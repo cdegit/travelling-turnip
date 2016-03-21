@@ -11,13 +11,17 @@
 		<script src="node_modules/underscore/underscore.js"></script>
 		<script src="backbone.js"></script>
 		<script src="backbone.localStorage.js"></script>
+
+		<link rel="stylesheet" href="bower_components/scooch/src/scooch.css">
+		<link rel="stylesheet" href="bower_components/scooch/src/scooch-style.css">
+		<script src="bower_components/scooch/src/scooch.js"></script>
+
 		<script src="default.js"></script>
 		<script src="backboneApp.js"></script>
 		<script src="router.js"></script>
 		<title>Travelling Turnip Prototype</title>
 	</head>
 	<body>
-
 		<header></header>
 
 		<div class="c-content">
@@ -63,8 +67,32 @@
 			<div class="c-sheet-container"></div>
 		</div>
 
+		<div class="c-onboarding"></div>
 
 		<!-- Just templates from here on out -->
+
+		<script type="text/template" id="onboarding-template">
+			<div class="m-scooch">
+				<div class="m-scooch-inner">
+					<div class="m-item m-active" style="background-image: url(img/onboardinga.jpg)">
+			    		<img src="img/onboarding_bottom1.png" class="u-max-full-width">
+			    		<a href="#meals" class="c-onboarding__skip"></a>
+				    </div>
+				    <div class="m-item" style="background-image: url(img/onboardingb.jpg)">
+				      	<img src="img/onboarding_bottom2.png" class="u-max-full-width">
+				      	<a href="#meals" class="c-onboarding__skip"></a>
+				    </div>
+				    <div class="m-item" style="background-image: url(img/onboardingc.jpg)">
+				      	<img src="img/onboarding_bottom3.png" class="u-max-full-width">
+				      	<a href="#meals" class="c-onboarding__skip"></a>
+				    </div>
+				    <div class="m-item" style="background-image: url(img/onboardingd.jpg)">
+				      	<img src="img/onboarding_bottom4.png" class="u-max-full-width">
+				      	<a href="#meals" class="c-onboarding__skip"></a>
+				    </div>
+				</div>
+			</div>
+		</script>
 
 		<script type="text/template" id="header-location-template">
 			<div class="c-page-title">

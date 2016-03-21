@@ -197,6 +197,19 @@ $(function(){
 	    }
 	});
 
+	var OnboardingView = Backbone.View.extend({
+		el: $('.c-onboarding'),
+		template: _.template($('#onboarding-template').html()),
+
+		// shouldn't actually take us to the log in page
+		// then set the onboarded var
+
+		render: function() {
+			this.$el.html(this.template());
+			return this.$el;
+		}
+	});
+
 	var HeaderView = Backbone.View.extend({
 		el: $('header'),
 		template: _.template($('#header-location-template').html()),
@@ -332,6 +345,7 @@ $(function(){
 	
 	turnip.User = new User({id: 1});
 
+	turnip.OnboardingView = new OnboardingView;
 	turnip.HeaderView = new HeaderView;
 	turnip.FooterView = new FooterView;
 	turnip.ModalView = new ModalView;

@@ -12,6 +12,7 @@ $(function() {
 
 			'account': 'account',
 
+			'onboarding': 'onboarding',
 			'clear': 'clearStorage',
 
 			'*actions': 'defaultRoute'
@@ -70,6 +71,8 @@ $(function() {
 
 	    Turnip.HeaderView.showLocationHeader();
 	    Turnip.FooterView.setIcon('meals');
+
+	    $('.c-onboarding').empty();
 	});
 
 	router.on('route:savedMeals', function() {
@@ -101,7 +104,6 @@ $(function() {
 
 		Turnip.PhrasesView.renderNewPage();
 
-		// should probably be using this instead
 		Turnip.FooterView.setIcon('phrasebook');
 		Turnip.HeaderView.showPhrasesCreateHeader();
 	});
@@ -112,6 +114,21 @@ $(function() {
 		} else {
 			Turnip.ModalView.openModal('accountLoggedOutTemplate');
 		}
+	});
+
+	router.on('route:onboarding', function() {
+		// Show the onboarding thing
+		Turnip.OnboardingView.render();
+
+		$('.m-scooch').scooch();
+
+		$('.m-scooch').on('beforeSlide', function(e, previousSlide, nextSlide) {
+			// Take to the log in page
+			if (previousSlide == 4 && nextSlide == 4) {
+				router.navigate('meals', {trigger: true});
+			}
+
+		});
 	});
 
 	router.on('route:clearStorage', function() {

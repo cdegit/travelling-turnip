@@ -462,3 +462,36 @@ header.c--transparent + .c-content {
 	color: #939FA6;
 	letter-spacing: 2px;
 }
+
+.c-onboarding {
+	position: fixed !important;
+	top: 0;
+	bottom: -5px;
+
+	z-index: 1;
+}
+
+.c-onboarding .m-scooch-inner {
+	height: 100%;
+}
+
+.c-onboarding .m-item {
+	height: 100%;
+	background-color: #fcf1f5;
+	background-position-x: 50%;
+	background-position-y: 130%;
+	background-repeat: no-repeat;
+}
+
+.c-onboarding img {
+	margin-top: 100%;
+}
+
+.c-onboarding__skip {
+	position: absolute;
+	bottom: 0px;
+
+	display: block;
+	width: 120px;
+	height: 60px;
+}
