@@ -171,81 +171,6 @@ $(function(){
       	}
 	});
 
-	var Phrase = Backbone.Model.extend({
-		localStorage: new Backbone.LocalStorage('phrases-backbone')
-	});
-
-	var PhraseList = Backbone.Collection.extend({
-		model: Phrase,
-		localStorage: new Backbone.LocalStorage('phrases-backbone')
-	});
-
-	var Phrases = new PhraseList;
-
-	var PhrasesContainerView = Backbone.View.extend({
-		el: $('#main'),
-		template: _.template($('#phrase-list-template').html()),
-		newTemplate: _.template($('#phrases-new-template').html()),
-		phraseTemplate: _.template($('#phrase-template').html()),
-		phraseComponents: [],
-
-		events: {
-			'submit .js-phrases-form': 'addNewPhrase'
-		},
-
-	    initialize: function() {
-	    	this.listenTo(Phrases, 'add', this.addOne);
-	    	this.selectedPhrases = new PhraseList;
-	    },
-
-	    render: function() {
-	    	if (!this.selectedPhrases.length) {
-				this.selectedPhrases.fetch();
-			}
-
-	    	this.$el.html(this.template({}));
-	    	
-	    	this.addAll();
-	    },
-
-	    addOne: function(phrase) {
-	    	$('.js-phrases-list').prepend(this.phraseTemplate(phrase.toJSON()));
-	    },
-
-	    addAll: function() {
-	    	this.selectedPhrases.each(this.addOne, this);
-	    },
-
-	    renderNewPage: function() {
-	    	this.$el.html(this.newTemplate({
-	    		phrases: defaultData.phraseComponents
-	    	}));
-	    },
-
-	    addNewPhrase: function(e) {
-	    	var $checked = this.$el.find(':checked');
-	    	var phrases = [];
-
-	    	e.preventDefault();
-
-	    	$checked.each(function(index, phrase) {
-	    		phrases.push(defaultData.phraseComponents[$(phrase).attr('phrase-index')]);
-	    	});
-
-	    	var phrase = new Phrase({
-	    		phrases: phrases,
-	    		id: this.selectedPhrases.length
-	    	});
-
-	    	this.selectedPhrases.add(phrase);
-	    	this.selectedPhrases.sync('create', phrase);
-
-	    	if (turnip.Router) {
-	    		turnip.Router.navigate('phrases', {trigger: true});
-	    	}
-	    }
-	});
-
 	var MealsContainerView = Backbone.View.extend({
 	    el: $("#todoapp"),
 	    initialize: function() {
@@ -398,96 +323,6 @@ $(function(){
 		}
 	});
 
-	var AccountView = Backbone.View.extend({
-		el: $('#main'),
-		loggedOutTemplate: _.template($('#account-logged-out-template').html()),
-		loggedInTemplate: _.template($('#account-logged-in-template').html()),
-
-		events: {
-			'submit .js-login-form': 'login',
-			'click .js-logout': 'logout',
-			'click .js-veggie-toggle': 'toggleVeggie',
-			'click .js-vegan-toggle': 'toggleVegan',
-			'click .js-gf-toggle': 'toggleGF'
-		},
-
-		initialize: function() {
-			turnip.User.fetch();
-			this.model = turnip.User;
-		},
-
-		render: function() {
-			var templateName;
-
-			if (this.model.get('loggedIn')) {
-				templateName = 'loggedInTemplate';
-			} else {
-				templateName = 'loggedOutTemplate';
-			}
-
-			this.$el.html(this[templateName](this.model.toJSON()));
-
-			this.setVeggieIcon();
-			this.setVeganIcon();
-			this.setGFIcon();
-
-			return this.$el;
-		},
-
-		login: function(e) {
-			var username = this.$el.find('input[type=text]').val();
-			e.preventDefault();
-			turnip.User.login(username);
-
-			this.render();
-		},
-
-		logout: function() {
-			turnip.User.logout();
-
-			this.render();
-		},
-
-      	toggleVeggie: function() {
-      		this.model.toggleVeggie();
-      		this.setVeggieIcon();
-      	},
-
-      	setVeggieIcon: function() {
-      		if (this.model.get('veggie')) {
-      			this.$el.find('.js-veggie-toggle img').attr('src', 'img/icon_veggie-active.png');
-      		} else {
-      			this.$el.find('.js-veggie-toggle img').attr('src', 'img/icon_veggie-inactive.png');
-      		}
-      	},
-
-      	toggleVegan: function() {
-      		this.model.toggleVegan();
-      		this.setVeganIcon();
-      	},
-
-      	setVeganIcon: function() {
-      		if (this.model.get('vegan')) {
-      			this.$el.find('.js-vegan-toggle img').attr('src', 'img/icon_vegan-active.png');
-      		} else {
-      			this.$el.find('.js-vegan-toggle img').attr('src', 'img/icon_vegan-inactive.png');
-      		}
-      	},
-
-      	toggleGF: function() {
-      		this.model.toggleGF();
-      		this.setGFIcon();
-      	},
-
-      	setGFIcon: function() {
-      		if (this.model.get('gf')) {
-      			this.$el.find('.js-gf-toggle img').attr('src', 'img/icon_gf-active.png');
-      		} else {
-      			this.$el.find('.js-gf-toggle img').attr('src', 'img/icon_gf-inactive.png');
-      		}
-      	}
-	});
-
 	var ModalView = Backbone.View.extend({
 		el: $('.c-modal-container'),
 		accountLoggedOutTemplate: _.template($('#account-logged-out-template').html()),
@@ -539,44 +374,6 @@ $(function(){
 			this.closeModal();
 		}
 	});
-
-	var SettingsView = Backbone.View.extend({
-		el: $('#main'),
-		template: _.template($('#settings-template').html()),
-
-		events: {
-			'change input': 'toggleSetting'
-		},
-
-		initialize: function() {
-			this.model = turnip.User;
-		},
-
-		render: function() {
-			this.$el.html(this.template());
-			this.initSettings();
-			return this.$el;
-		},
-
-		toggleSetting: function(e) {
-			var $checkbox = $(e.target);
-			var key = $checkbox.attr('name');
-			var val = $checkbox.prop('checked');
-
-			this.model.set(key, val);
-			this.model.save();
-		},
-
-		initSettings: function() {
-			var that = this;
-			var $checkboxes = this.$el.find('[type="checkbox"]');
-
-			$checkboxes.each(function(index, checkbox) {
-				var name = checkbox.name;
-				$(checkbox).prop('checked', that.model.get(name));
-			});
-		}
-	});
 	
 	turnip.User = new User({id: 1});
 
@@ -586,18 +383,12 @@ $(function(){
 	turnip.FooterView = new FooterView;
 	turnip.ModalView = new ModalView;
 
-	turnip.AccountView = new AccountView;
-	turnip.SettingsView = new SettingsView;
-
 	turnip.MealView = MealView;
 	turnip.Recipe = Recipe;
 	turnip.RecipeView = RecipeView;
 
 	turnip.Meals = Meals;
 	turnip.MealsView = new MealsContainerView;
-
-	turnip.Phrases = Phrases;
-	turnip.PhrasesView = new PhrasesContainerView;
 
 	window.Turnip = turnip;
 });
