@@ -197,21 +197,23 @@
 		</script>
 
 		<script type="text/template" id="meal-template">
-			<div class="c-meal__image-container" style="background-image: url(img/meals<%- id %>.png);">
-				<ul class="c-meal__icons">
-					<% if (restrictions.veggie) { %>
-						<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
-					<% } %>
-					<% if (restrictions.vegan) { %>
-						<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
-					<% } %>
-					<% if (restrictions.gf) { %>
-						<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
-					<% } %>
-				</ul>
-			</div>
+			<a href="#meal/<%- id %>">
+				<div class="c-meal__image-container" style="background-image: url(img/meals<%- id %>.png);">
+					<ul class="c-meal__icons">
+						<% if (restrictions.veggie) { %>
+							<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+						<% } %>
+						<% if (restrictions.vegan) { %>
+							<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+						<% } %>
+						<% if (restrictions.gf) { %>
+							<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+						<% } %>
+					</ul>
+				</div>
+			</a>
 			<div class="c-meal__content">
-				<h2 class="c-meal__title"><%- title %></h2>
+				<h2 class="t-title u-margin-top-sm-ng"><a href="#meal/<%- id %>"><%- title %></a></h2>
 				<div class="c-meal__quick-info">
 					Served Nearby &bull; Recipes Available
 				</div>
