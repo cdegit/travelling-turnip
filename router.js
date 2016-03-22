@@ -6,6 +6,7 @@ $(function() {
 			'meal/:id/recipes': 'mealRecipes',
 			'meal/:id/recipes/:rid': 'recipeDetail',
 
+			'add': 'add',
 			'addMeal': 'addMeal',
 			'add/meal/:id/recipe': 'addRecipe',
 
@@ -88,6 +89,18 @@ $(function() {
 			Turnip.HeaderView.showBackHeader({title: model.get('title')});
 		} else {
 			router.navigate('meals', {trigger: true});
+		}
+	});
+
+	router.on('route:add', function() {
+		$('.c-overlay').addClass('c--active');
+		$('.c-sheet').addClass('c--active');
+	});
+
+	router.on('route', function(route) {
+		if (route !== 'add') {
+			$('.c-overlay').removeClass('c--active');
+			$('.c-sheet').removeClass('c--active');
 		}
 	});
 

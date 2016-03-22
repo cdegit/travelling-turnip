@@ -430,6 +430,10 @@ header.c--transparent + .c-content {
 	font-style: italic;
 }
 
+.c-button.c--full {
+	width: 100%;
+}
+
 .c--compressed {
 	letter-spacing: 0px;
 }
@@ -440,14 +444,16 @@ header.c--transparent + .c-content {
 
 .c-overlay.c--active {
 	position: fixed;
-	top: 60px;
-	bottom: 0px;
+	top: 0px;
+	bottom: 50px;
 	left: 0px;
 	right: 0px;
 
 	display: block;
 
 	background-color: rgba(35, 31, 32, 0.79);
+
+	z-index: 1;
 }
 
 .c-sheet {
@@ -456,13 +462,15 @@ header.c--transparent + .c-content {
 
 .c-sheet.c--active {
 	position: fixed;
-	top: 60px;
+	bottom: 50px;
 	left: 0px;
 	right: 0px;
 
 	display: block;
 	background-color: white;
 	padding: 20px;
+
+	z-index: 2;
 }
 
 .c-blue-text {
