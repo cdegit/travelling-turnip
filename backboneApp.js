@@ -322,58 +322,6 @@ $(function(){
 			this.$el.find('.c--' + name).addClass('c--active');
 		}
 	});
-
-	var ModalView = Backbone.View.extend({
-		el: $('.c-modal-container'),
-		accountLoggedOutTemplate: _.template($('#account-logged-out-template').html()),
-		accountLoggedInTemplate: _.template($('#account-logged-in-template').html()),
-
-		events: {
-			'click .c-overlay': 'closeModal',
-			'submit form': 'login',
-			'click .js-logout': 'logout'
-		},
-
-		initialize: function() {
-			turnip.User.fetch();
-		},
-
-		render: function(templateName) {
-			var tmp = templateName || 'template';
-			var data = turnip.User.toJSON();
-
-			var $container = this.$el.find('.c-sheet-container');
-			var $sheet = $('<div class="c-sheet c--active">');
-
-			$container.empty();
-
-			$sheet.append(this[tmp](data));
-			$container.append($sheet);
-		},
-
-		openModal: function(templateName) {
-			this.render(templateName);
-			this.$el.find('.c-overlay').addClass('c--active');
-		},
-
-		closeModal: function() {
-			this.$el.find('.c--active').removeClass('c--active');
-			window.history.back();
-		},
-
-		login: function(e) {
-			var username = this.$el.find('input[type=text]').val();
-			e.preventDefault();
-			turnip.User.login(username);
-
-			this.closeModal();
-		},
-
-		logout: function() {
-			turnip.User.logout();
-			this.closeModal();
-		}
-	});
 	
 	turnip.User = new User({id: 1});
 
@@ -381,7 +329,6 @@ $(function(){
 	turnip.WelcomeView = new WelcomeView;
 	turnip.HeaderView = new HeaderView;
 	turnip.FooterView = new FooterView;
-	turnip.ModalView = new ModalView;
 
 	turnip.MealView = MealView;
 	turnip.Recipe = Recipe;
