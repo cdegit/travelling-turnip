@@ -13,9 +13,35 @@ $(function(){
 		logout: function() {
 			this.save({
 				loggedIn: false,
-				name: ''
+				name: '',
+				veggie: false,
+				vegan: false,
+				gf: false,
+				// settings ones, maybe group later
+				gps: false,
+				local: false,
+				restos: false,
+				faved: false
 			});
-		}
+		},
+
+		toggleVeggie: function() {
+			this.save({
+				veggie: !this.get('veggie')
+			});
+		},
+
+		toggleVegan: function() {
+			this.save({
+				vegan: !this.get('vegan')
+			});
+		},
+
+		toggleGF: function() {
+			this.save({
+				gf: !this.get('gf')
+			});
+		},
 	});
 
 	var Meal = Backbone.Model.extend({
@@ -379,7 +405,10 @@ $(function(){
 
 		events: {
 			'submit .js-login-form': 'login',
-			'click .js-logout': 'logout'
+			'click .js-logout': 'logout',
+			'click .js-veggie-toggle': 'toggleVeggie',
+			'click .js-vegan-toggle': 'toggleVegan',
+			'click .js-gf-toggle': 'toggleGF'
 		},
 
 		initialize: function() {
@@ -397,6 +426,11 @@ $(function(){
 			}
 
 			this.$el.html(this[templateName](this.model.toJSON()));
+
+			this.setVeggieIcon();
+			this.setVeganIcon();
+			this.setGFIcon();
+
 			return this.$el;
 		},
 
@@ -412,7 +446,46 @@ $(function(){
 			turnip.User.logout();
 
 			this.render();
-		}
+		},
+
+      	toggleVeggie: function() {
+      		this.model.toggleVeggie();
+      		this.setVeggieIcon();
+      	},
+
+      	setVeggieIcon: function() {
+      		if (this.model.get('veggie')) {
+      			this.$el.find('.js-veggie-toggle img').attr('src', 'img/icon_veggie-active.png');
+      		} else {
+      			this.$el.find('.js-veggie-toggle img').attr('src', 'img/icon_veggie-inactive.png');
+      		}
+      	},
+
+      	toggleVegan: function() {
+      		this.model.toggleVegan();
+      		this.setVeganIcon();
+      	},
+
+      	setVeganIcon: function() {
+      		if (this.model.get('vegan')) {
+      			this.$el.find('.js-vegan-toggle img').attr('src', 'img/icon_vegan-active.png');
+      		} else {
+      			this.$el.find('.js-vegan-toggle img').attr('src', 'img/icon_vegan-inactive.png');
+      		}
+      	},
+
+      	toggleGF: function() {
+      		this.model.toggleGF();
+      		this.setGFIcon();
+      	},
+
+      	setGFIcon: function() {
+      		if (this.model.get('gf')) {
+      			this.$el.find('.js-gf-toggle img').attr('src', 'img/icon_gf-active.png');
+      		} else {
+      			this.$el.find('.js-gf-toggle img').attr('src', 'img/icon_gf-inactive.png');
+      		}
+      	}
 	});
 
 	var ModalView = Backbone.View.extend({
