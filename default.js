@@ -82,6 +82,41 @@ var defaultData = {
 			}]
 		}]
 	}],
+	restaurants: [{
+		id: 1,
+		name: 'Ristorante Italiano',
+		restrictions: {
+			veggie: true,
+			vegan: false,
+			gf: false
+		},
+		desc: 'We serve homemade pizza, lasagna, and more!',
+		saved: false,
+		site: '',
+		phone: '+39 06 446 2046',
+		hours: 'CLOSED NOW. OPENS AT 12:00PM',
+		availableMeals: [
+			'Vegan Lasagna',
+			'Homemade spaghetti with mushrooms'
+		]
+	},{
+		id: 2,
+		name: 'Via dei Castani',
+		restrictions: {
+			veggie: true,
+			vegan: true,
+			gf: false
+		},
+		desc: 'Welcome to Roma’s finest restaurant, serving excellent traditional dishes that will satisfy your cravings. We have over a decade of experience!',
+		saved: false,
+		site: 'VIADEICASTANI.IT',
+		phone: '+39 06 230 4855',
+		hours: 'CLOSED NOW. OPENS AT 9:00AM',
+		availableMeals: [
+			'Vegan Antipasto',
+			'Vegetarian thin crust avocado pizza'
+		]
+	}],
 	phraseComponents: [{
 		english: 'I\'m vegan',
 		italian: 'Io sono vegano'

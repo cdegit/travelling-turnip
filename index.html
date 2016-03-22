@@ -420,12 +420,51 @@
 		<script type="text/template" id="map-template">
 			<div class="c-map">
 				<img src="img/map.png">
-				<a class="c-marker js-resto1">
+				<a href="#restaurants/1" class="c-marker js-resto1">
 					<img src="img/icon_map-marker.png">
 				</a>
-				<a class="c-marker js-resto2">
+				<a href="#restaurants/1" class="c-marker js-resto2">
 					<img src="img/icon_map-marker.png">
 				</a>
+			</div>
+		</script>
+
+		<script type="text/template" id="restaurant-template">
+			<div class="c-meal__image-container" style="background-image: url(http://placehold.it/411x150);">
+				<h2 class="c-meal__detail-title"><%- name %></h2>
+				<ul class="c-meal__icons">
+					<li class="c-meal__icon"></li>
+				</ul>
+			</div>
+			<div class="c-restaurant__content u-full-padding">
+				<div class="c-arrange c--space-between c--center">
+					<img src="img/stars-3.png">
+					<button class="js-toggle-saved"><img src="img/icon_empty-heart.png" class="c-icon c-heart"></button>
+				</div>
+
+				<div class="t-body u-margin-top-lg"><%- desc %></div>
+
+				<div class="t-grey t--upper u-margin-top-lg">
+					<%- site %> <%- phone %>
+					<div><%- hours %></div>
+				</div>
+
+				<a href="https://www.google.ca/maps" class="c-button c--primary u-margin-top-lg">Directions</a>
+
+				<hr class="u-margin-top-lg">
+
+				<h3 class="t-title t-h3">
+					Meals you've tried
+					<img src="img/icon_add-resto-meal.png">
+				</h3>
+
+				<h3 class="t-title t-h3 u-margin-top-lg">
+					Meals Available
+					<img src="img/icon_add-resto-meal.png">
+				</h3>
+				<% _.each(availableMeals, function(availableMeal, index){ %>
+					<div class="t-grey"><%- availableMeal %></div>
+				<% }); %>
 			</div>
 		</script>
 	</body>

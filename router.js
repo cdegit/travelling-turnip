@@ -7,6 +7,7 @@ $(function() {
 			'meal/:id/recipes/:rid': 'recipeDetail',
 
 			'map': 'map',
+			'restaurants/:id': 'restaurantDetail',
 
 			'phrases': 'phrases',
 			'phrases/new': 'createPhrase',
@@ -111,6 +112,28 @@ $(function() {
 	router.on('route:map', function() {
 		Turnip.MapView.render();
 		Turnip.HeaderView.showLocationHeader();
+	});
+
+	router.on('route:restaurantDetail', function(id) {
+		Turnip.Restaurants.fetch();
+
+		if (!Turnip.Restaurants.length) {
+	    	defaultData.restaurants.forEach(function(restaurant) {
+				Turnip.Restaurants.create(restaurant);
+	    	});
+	    	Turnip.Restaurants.sync();
+	    }
+
+		var resto = Turnip.Restaurants.get(id);
+
+		if (resto) {
+			var view = new Turnip.RestaurantView({model: resto});
+ 			$("#main").html(view.render(true).el);
+
+ 			Turnip.HeaderView.showTransparentHeader();
+ 		} else {
+ 			router.navigate('map', {trigger: true});
+ 		}
 	});
 
 	router.on('route:savedMeals', function() {
