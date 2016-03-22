@@ -423,6 +423,44 @@ $(function(){
 			this.closeModal();
 		}
 	});
+
+	var SettingsView = Backbone.View.extend({
+		el: $('#main'),
+		template: _.template($('#settings-template').html()),
+
+		events: {
+			'change input': 'toggleSetting'
+		},
+
+		initialize: function() {
+			this.model = turnip.User;
+		},
+
+		render: function() {
+			this.$el.html(this.template());
+			this.initSettings();
+			return this.$el;
+		},
+
+		toggleSetting: function(e) {
+			var $checkbox = $(e.target);
+			var key = $checkbox.attr('name');
+			var val = $checkbox.prop('checked');
+
+			this.model.set(key, val);
+			this.model.save();
+		},
+
+		initSettings: function() {
+			var that = this;
+			var $checkboxes = this.$el.find('[type="checkbox"]');
+
+			$checkboxes.each(function(index, checkbox) {
+				var name = checkbox.name;
+				$(checkbox).prop('checked', that.model.get(name));
+			});
+		}
+	});
 	
 	turnip.User = new User({id: 1});
 
@@ -431,6 +469,8 @@ $(function(){
 	turnip.HeaderView = new HeaderView;
 	turnip.FooterView = new FooterView;
 	turnip.ModalView = new ModalView;
+
+	turnip.SettingsView = new SettingsView;
 
 	turnip.MealView = MealView;
 	turnip.Recipe = Recipe;

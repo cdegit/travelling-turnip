@@ -129,7 +129,7 @@
 			<nav class="c-header-icons">
 				<ul>
 					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
-					<li><img src="img/icon_settings.png" alt="Settings" class="c-icon"></li>
+					<li><a href="#settings"><img src="img/icon_settings.png" alt="Settings" class="c-icon"></a></li>
 					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
 				</ul>
 			</nav>
@@ -155,7 +155,7 @@
 			<nav class="c-header-icons">
 				<ul>
 					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
-					<li><img src="img/icon_settings.png" alt="Settings" class="c-icon"></li>
+					<li><a href="#settings"><img src="img/icon_settings.png" alt="Settings" class="c-icon"></a></li>
 					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
 				</ul>
 			</nav>
@@ -176,7 +176,7 @@
 			<nav class="c-header-icons">
 				<ul>
 					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
-					<li><img src="img/icon_settings.png" alt="Settings" class="c-icon"></li>
+					<li><a href="#settings"><img src="img/icon_settings.png" alt="Settings" class="c-icon"></a></li>
 					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
 				</ul>
 			</nav>
@@ -339,6 +339,40 @@
 						<input type="submit" class="c-button c--primary" value="Create phrase">
 					</div>
 				</form>
+			</div>
+		</script>
+
+		<script type="text/template" id="settings-template">
+			<div class="c-settings">
+				<h2 class="t-title">Location</h2>
+
+				<label class="c-checkbox-field">
+					<span class="c-checkbox-label">Enable GPS</span>
+					<input type="checkbox" name="gps">
+					<span class="c-checkbox-icon"></span>
+				</label>
+
+				<label class="c-checkbox-field u-divider-bottom">
+					<span class="c-checkbox-label">Enable Local Recommendations</span>
+					<input type="checkbox" name="local">
+					<span class="c-checkbox-icon"></span>
+				</label>
+
+				<hr>
+
+				<h2 class="t-title">Notification</h2>
+
+				<label class="c-checkbox-field">
+					<span class="c-checkbox-label">Notify me about new restaurants</span>
+					<input type="checkbox" name="restos">
+					<span class="c-checkbox-icon"></span>
+				</label>
+
+				<label class="c-checkbox-field">
+					<span class="c-checkbox-label">Notify me when someone favourites my recipe</span>
+					<input type="checkbox" name="faved">
+					<span class="c-checkbox-icon"></span>
+				</label>
 			</div>
 		</script>
 	</body>

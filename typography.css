@@ -1,3 +1,11 @@
+.t-title {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 16px;
+	color: #335B60;
+	letter-spacing: 2px;
+}
+
 .t-body {
 	font-size: 12px;
 	letter-spacing: 1px;

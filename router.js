@@ -15,6 +15,7 @@ $(function() {
 			'saved/recipes': 'savedRecipes',
 
 			'account': 'account',
+			'settings': 'settings',
 
 			'onboarding': 'onboarding',
 			'welcome': 'welcome',
@@ -159,6 +160,11 @@ $(function() {
 		} else {
 			Turnip.ModalView.openModal('accountLoggedOutTemplate');
 		}
+	});
+
+	router.on('route:settings', function() {
+		Turnip.SettingsView.render();
+		Turnip.HeaderView.showBackHeader({title: 'Settings'});
 	});
 
 	router.on('route:onboarding', function() {
