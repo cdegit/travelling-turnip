@@ -112,7 +112,7 @@
 
 			<div class="u-text-center u-margin-top-lg">
 				<span class="c-blue-text">Not a member?</span>
-				<a class="c-button c--primary u-margin-top-md" href="#create-account">Create an account</a>
+				<a class="c-button c--primary u-margin-top-md" href="#account/create">Create an account</a>
 				<div class="u-margin-top-lg">
 					<a href="#meals" class="c-button">Continue as guest</a>
 				</div>
@@ -138,6 +138,13 @@
 		<script type="text/template" id="header-back-template">
 			<div class="c-back-header">
 				<button class="c-icon-button js-back"><img src="img/icon_back.png" class="c-icon"></button>
+				<div class="c-page-title"><%- title %></div>
+			</div>
+		</script>
+
+		<script type="text/template" id="header-close-template">
+			<div class="c-back-header">
+				<button class="c-icon-button js-back"><img src="img/icon_close.png" class="c-icon"></button>
 				<div class="c-page-title"><%- title %></div>
 			</div>
 		</script>
@@ -328,7 +335,7 @@
 
 				<div class="u-text-center u-margin-top-lg">
 					<span class="c-blue-text">Not a member?</span>
-					<a class="c-button c--primary u-margin-top-md">Create an account</a>
+					<a href="#account/create" class="c-button c--primary u-margin-top-md">Create an account</a>
 				</div>
 			</div>
 		</script>
@@ -367,6 +374,39 @@
 				<div class="u-text-center u-margin-top-xlg">
 					<a class="c-button c--primary js-logout">Log out</a>
 				</div>
+			</div>
+		</script>
+
+		<script type="text/template" id="create-account-template">
+			<div class="u-full-padding">
+				<form class="js-create-account-form">
+					<input type="text" class="c-field u-margin-top-md" placeholder="Username">
+					<input type="email" class="c-field u-margin-top-md" placeholder="E-Mail">
+					<input type="password" class="c-field" placeholder="Password">
+
+					<div class="c-dietary-restriction__container js-account-dietary-restrictions">
+						<h2 class="t-title">Dietary Restrictions</h2>
+
+						<div class="c-arrange c--space-between">
+							<div class="c-dietary-restriction js-veggie-toggle">
+								<img class="c-icon" src="img/icon_veggie-inactive.png">
+								<div class="t-grey t--upper">Vegetarian</div>
+							</div>
+							<div class="c-dietary-restriction js-vegan-toggle">
+								<img class="c-icon" src="img/icon_vegan-inactive.png">
+								<div class="t-grey t--upper">Vegan</div>
+							</div>
+							<div class="c-dietary-restriction js-gf-toggle">
+								<img class="c-icon" src="img/icon_gf-inactive.png">
+								<div class="t-grey t--upper">Gluten Free</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="c-button-container c--right u-margin-top-md">
+						<input type="submit" class="c-button c--secondary" value="Create Account">
+					</div>
+				</form>
 			</div>
 		</script>
 

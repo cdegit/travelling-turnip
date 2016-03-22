@@ -3,9 +3,11 @@ $(function() {
 		el: $('#main'),
 		loggedOutTemplate: _.template($('#account-logged-out-template').html()),
 		loggedInTemplate: _.template($('#account-logged-in-template').html()),
+		createTemplate: _.template($('#create-account-template').html()),
 
 		events: {
 			'submit .js-login-form': 'login',
+			'submit .js-create-account-form': 'createAccount',
 			'click .js-logout': 'logout',
 			'click .js-account-dietary-restrictions .js-veggie-toggle': 'toggleVeggie',
 			'click .js-account-dietary-restrictions .js-vegan-toggle': 'toggleVegan',
@@ -35,6 +37,11 @@ $(function() {
 			return this.$el;
 		},
 
+		renderCreatePage: function() {
+			this.$el.html(this.createTemplate(this.model.toJSON()));
+			return this.$el;
+		},
+
 		login: function(e) {
 			var username = this.$el.find('input[type=text]').val();
 			e.preventDefault();
@@ -47,6 +54,14 @@ $(function() {
 			Turnip.User.logout();
 
 			this.render();
+		},
+
+		createAccount: function(e) {
+			var username = this.$el.find('input[type=text]').val();
+			e.preventDefault();
+			Turnip.User.login(username);
+
+			Turnip.Router.navigate('meals', {trigger: true});
 		},
 
       	toggleVeggie: function() {

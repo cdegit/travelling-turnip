@@ -21,6 +21,7 @@ $(function() {
 			'saved/recipes': 'savedRecipes',
 
 			'account': 'account',
+			'account/create': 'createAccount',
 			'settings': 'settings',
 
 			'onboarding': 'onboarding',
@@ -92,10 +93,12 @@ $(function() {
 
 	router.on('route:addMeal', function() {
 		Turnip.AddMealView.render();
+		Turnip.HeaderView.showCloseHeader({title: 'Add Meal'});
 	});
 
 	router.on('route:addRecipe', function(id) {
 		Turnip.AddRecipeView.render(id);
+		Turnip.HeaderView.showCloseHeader({title: 'Add Recipe'});
 	});
 
 	router.on('route:defaultRoute', function(id) {
@@ -202,6 +205,12 @@ $(function() {
 	router.on('route:account', function() {
 		Turnip.AccountView.render();
 		Turnip.HeaderView.showBackHeader({title: 'Account'});
+	});
+
+	router.on('route:createAccount', function() {
+		$('.c-welcome').empty();
+		Turnip.AccountView.renderCreatePage();
+		Turnip.HeaderView.showCloseHeader({title: 'Create Account'});
 	});
 
 	router.on('route:settings', function() {

@@ -241,6 +241,7 @@ $(function(){
 		el: $('header'),
 		template: _.template($('#header-location-template').html()),
 		backTemplate: _.template($('#header-back-template').html()),
+		closeTemplate: _.template($('#header-close-template').html()),
 		transparentTemplate: _.template($('#header-transparent-template').html()),
 		savedTemplate: _.template($('#header-saved-template').html()),
 		phrasesTemplate: _.template($('#header-phrases-template').html()),
@@ -270,6 +271,10 @@ $(function(){
 
 		showBackHeader: function(data) {
 			this.render('backTemplate', data);
+		},
+
+		showCloseHeader: function(data) {
+			this.render('closeTemplate', data);
 		},
 
 		showTransparentHeader: function() {
