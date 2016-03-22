@@ -276,7 +276,9 @@ $(function(){
 			} else {
 				$('html').removeClass('c--taupe');
 				this.$el.removeClass('c--extended');
-			}			
+			}
+
+			this.currentTemplate = templateName;
 		},
 
 		showLocationHeader: function() {
@@ -299,8 +301,13 @@ $(function(){
 
 		},
 
-		showSavedHeader: function() {
+		showSavedHeader: function(tab) {
 			this.render('savedTemplate');
+
+			if (tab) {
+				$('.c-saved-nav .c--active').removeClass('c--active');
+				$('.c-saved-nav .js-' + tab).addClass('c--active');
+			}
 		},
 
 		showPhrasesHeader: function() {

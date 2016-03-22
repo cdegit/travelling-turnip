@@ -166,24 +166,27 @@ $(function() {
 		} else {
 			$('#main').append('<div class="u-full-padding t-body">You don\'t have any meals saved. Why not go to the meals page and add your favourites?</div>');
 		}
-		Turnip.HeaderView.showSavedHeader();
+		Turnip.HeaderView.showSavedHeader('meals');
 		Turnip.FooterView.setIcon('my-food');
 	});
 
 	router.on('route:savedRestaurants', function() {
-		// May need to fetch first
+		Turnip.Restaurants.fetch();
 		var savedRestaurants = Turnip.Restaurants.saved();
 
 		$('#main').empty();
 
 		if (savedRestaurants.length) {
-			// savedMeals.forEach(function(meal) {
-			// 	Turnip.MealsView.addAllSaved();
-			// });
-			console.log(savedRestaurants);
+			savedRestaurants.forEach(function(restaurant) {
+				var view = new Turnip.RestaurantView({model: restaurant});
+ 				$("#main").append(view.renderCard());
+			});
 		} else {
 			$('#main').append('<div class="u-full-padding t-body">You don\'t have any restaurants saved. Why not go to the map and add your favourites?</div>');
 		}
+
+		Turnip.HeaderView.showSavedHeader('restaurants');
+		Turnip.FooterView.setIcon('my-food');
 	});
 
 	router.on('route:savedRecipes', function() {
@@ -200,6 +203,9 @@ $(function() {
 		} else {
 			$('#main').append('<div class="u-full-padding t-body">You don\'t have any recipes saved. Why not go to the meals page and add your favourites?</div>');
 		}
+
+		Turnip.HeaderView.showSavedHeader('recipes');
+		Turnip.FooterView.setIcon('my-food');
 	});
 
 	router.on('route:phrases', function() {

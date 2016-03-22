@@ -168,9 +168,9 @@
 			</nav>
 			<nav class="c-saved-nav">
 				<ul>
-					<li class="c--active"><a href="#saved/meals">Meals</a></li>
-					<li><a href="#saved/restaurants">Restaurants</a></li>
-					<li><a href="#saved/recipes">Recipes</a></li>
+					<li class="c--active js-meals"><a href="#saved/meals">Meals</a></li>
+					<li class="js-restaurants"><a href="#saved/restaurants">Restaurants</a></li>
+					<li class="js-recipes"><a href="#saved/recipes">Recipes</a></li>
 				</ul>
 			</nav>
 		</script>
@@ -313,21 +313,23 @@
 		</script>
 
 		<script type="text/template" id="recipe-card-template">
-			<div class="c-meal__image-container" style="background-image: url(img/meals<%- id %>.png);">
-				<ul class="c-meal__icons">
-					<% if (restrictions.veggie) { %>
-						<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
-					<% } %>
-					<% if (restrictions.vegan) { %>
-						<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
-					<% } %>
-					<% if (restrictions.gf) { %>
-						<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
-					<% } %>
-				</ul>
-			</div>
+			<a href="#meal/<%- mealId %>/recipes/<%- id %>">
+				<div class="c-meal__image-container" style="background-image: url(img/meals<%- id %>.png);">
+					<ul class="c-meal__icons">
+						<% if (restrictions.veggie) { %>
+							<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+						<% } %>
+						<% if (restrictions.vegan) { %>
+							<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+						<% } %>
+						<% if (restrictions.gf) { %>
+							<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+						<% } %>
+					</ul>
+				</div>
+			</a>
 			<div class="c-meal__content">
-				<h2 class="c-meal__title"><%- title %></h2>
+				<h2 class="t-title u-margin-top-sm-ng"><a href="#meal/<%- mealId %>/recipes/<%- id %>"><%- title %></a></h2>
 				<div class="c-recipe__times t-grey t--upper">
 					<span>Prep time: <%- prepTime %></span><span class="u-margin-left-lg">Cook time: <%- cookTime %></span>
 				</div>
@@ -577,6 +579,37 @@
 				<% _.each(availableMeals, function(availableMeal, index){ %>
 					<div class="t-grey"><%- availableMeal %></div>
 				<% }); %>
+			</div>
+		</script>
+
+		<script type="text/template" id="restaurant-card-template">
+			<a href="#restaurants/<%- id %>">
+				<div class="c-meal__image-container" style="background-image: url(img/restaurant<%- id %>.png);">
+					<ul class="c-meal__icons">
+						<% if (restrictions.veggie) { %>
+							<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+						<% } %>
+						<% if (restrictions.vegan) { %>
+							<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+						<% } %>
+						<% if (restrictions.gf) { %>
+							<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+						<% } %>
+					</ul>
+				</div>
+			</a>
+			<div class="c-meal__content">
+				<h2 class="t-title u-margin-top-sm-ng"><a href="#restaurants/<%- id %>"><%- name %></a></h2>
+				<div class="c-recipe__times t-grey t--upper">
+					<span><%- phone %></span><span class="u-margin-left-lg"><%- hours.split('.')[0] %></span>
+				</div>
+				
+				<div class="t-body u-margin-top-md"><%- desc %></div>
+			
+				<div class="c-arrange c--space-between c--center">
+					<button class="js-toggle-saved u-margin-top-md"><img src="img/icon_full-heart.png" class="c-icon c-heart"></button>
+					<a href="https://www.google.ca/maps" class="c-button">Directions</a>
+				</div>
 			</div>
 		</script>
 

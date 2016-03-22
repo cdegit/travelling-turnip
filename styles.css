@@ -352,11 +352,11 @@ header.c--transparent + .c-content {
 	text-shadow: black 1px 1px 1px;
 }
 
-.c-recipe {
+.c-recipe, .c-restaurant {
 	background: white;
 }
 
-.c-recipe + .c-recipe {
+.c-recipe + .c-recipe, .c-restaurant + .c-restaurant {
 	margin-top: 20px;
 }
 

@@ -29,21 +29,21 @@ $(function() {
 		tagName: 'div',
 		className: 'c-restaurant',
 		template: _.template($('#restaurant-template').html()),
-		//detailTemplate: _.template($('#meal-detail-template').html()),
+		cardTemplate: _.template($('#restaurant-card-template').html()),
 
 		events: {
 			'click .js-toggle-saved' : 'toggleSaved'
 		},
 
-		render: function(detail) {
-			// if (detail) {
-			// 	this.$el.html(this.detailTemplate(this.model.toJSON()));
-			// } else {
-				this.$el.html(this.template(this.model.toJSON()));
-				this.setSavedIcon();
-			// }
-      		
+		render: function() {
+			this.$el.html(this.template(this.model.toJSON()));
+			this.setSavedIcon();
       		return this;
+      	},
+
+      	renderCard: function() {
+      		this.$el.html(this.cardTemplate(this.model.toJSON()));
+      		return this.$el;
       	},
 
       	toggleSaved: function() {

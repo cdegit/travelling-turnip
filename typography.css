@@ -12,6 +12,10 @@
 	font-size: 14px;
 }
 
+.t-title a, .t-title a:visited {
+	color: #335B60;
+}
+
 .t-body {
 	font-size: 12px;
 	letter-spacing: 1px;
