@@ -276,7 +276,13 @@
 
 		<script type="text/template" id="account-logged-out-template">
 			<div class="u-full-padding">
-				<img src="img/icon_guest.png" alt="Logged in as Guest">
+				<div class="c-arrange c--center">
+					<img src="img/icon_guest.png" alt="Logged in as Guest">
+					<div class="u-margin-left-lg">
+						<div class="t-grey t--upper">Welcome</div>
+						<div class="t-title">Guest</div>
+					</div>
+				</div>
 
 				<hr>
 
@@ -298,13 +304,37 @@
 
 		<script type="text/template" id="account-logged-in-template">
 			<div class="u-full-padding">
-				Logged in as <%- name %>
+				<div class="c-arrange c--center">
+					<img src="img/icon_guest.png" alt="Logged in as Guest">
+					<div class="u-margin-left-lg">
+						<div class="t-grey t--upper">Logged in as</div>
+						<div class="t-title"><%- name %></div>
+					</div>
+				</div>
 
 				<hr>
 
-				<h2 class="t-title">Dietary Restrictions</h2>
+				<div class="c-dietary-restriction__container">
+					<h2 class="t-title">Dietary Restrictions</h2>
 
-				<div class="u-text-center u-margin-top-lg">
+					<!-- should be able to change these here -->
+					<div class="c-arrange c--space-between">
+						<div class="c-dietary-restriction">
+							<img class="c-icon" src="img/icon_veggie-inactive.png">
+							<div class="t-grey t--upper">Vegetarian</div>
+						</div>
+						<div class="c-dietary-restriction">
+							<img class="c-icon" src="img/icon_vegan-inactive.png">
+							<div class="t-grey t--upper">Vegan</div>
+						</div>
+						<div class="c-dietary-restriction">
+							<img class="c-icon" src="img/icon_gf-inactive.png">
+							<div class="t-grey t--upper">Gluten Free</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="u-text-center u-margin-top-xlg">
 					<a class="c-button c--primary js-logout">Log out</a>
 				</div>
 			</div>

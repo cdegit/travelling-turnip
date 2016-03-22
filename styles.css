@@ -552,3 +552,17 @@ header.c--transparent + .c-content {
 .c-settings {
 	padding: 20px;
 }
+
+.c-dietary-restriction__container {
+	margin: 20px;
+
+	text-align: center;
+}
+
+.c-dietary-restriction {
+	text-align: center;
+}
+
+.c-dietary-restriction .t-grey {
+	margin-top: -12px;
+}
