@@ -191,7 +191,15 @@
 		<script type="text/template" id="meal-template">
 			<div class="c-meal__image-container" style="background-image: url(img/meals<%- id %>.png);">
 				<ul class="c-meal__icons">
-					<li class="c-meal__icon"></li>
+					<% if (restrictions.veggie) { %>
+						<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.vegan) { %>
+						<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.gf) { %>
+						<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+					<% } %>
 				</ul>
 			</div>
 			<div class="c-meal__content">
@@ -204,7 +212,7 @@
 				</p>
 			
 				<div class="c-meal__actions">
-					<button class="js-toggle-saved"><img src="img/icon_empty-heart.png" class="c-icon"></button>
+					<button class="js-toggle-saved"><img src="img/icon_empty-heart.png" class="c-icon c-heart"></button>
 					<div class="c-button-container">
 						<a href="#meal/<%- id %>" class="c-button">About</a>
 						<a class="c-button">Restaurants</a>
@@ -218,7 +226,15 @@
 			<div class="c-meal__image-container" style="background-image: url(img/meals<%- id %>.png);">
 				<h2 class="c-meal__detail-title"><%- title %></h2>
 				<ul class="c-meal__icons">
-					<li class="c-meal__icon"></li>
+					<% if (restrictions.veggie) { %>
+						<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.vegan) { %>
+						<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.gf) { %>
+						<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+					<% } %>
 				</ul>
 			</div>
 			<div class="c-meal__actions c--dark">
@@ -250,7 +266,15 @@
 		<script type="text/template" id="recipe-detail-template">
 			<div class="c-meal__image-container" style="background-image: url(http://placehold.it/411x150);">
 				<ul class="c-meal__icons">
-					<li class="c-meal__icon"></li>
+					<% if (restrictions.veggie) { %>
+						<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.vegan) { %>
+						<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.gf) { %>
+						<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+					<% } %>
 				</ul>
 			</div>
 			<div class="c-recipe__content">
@@ -433,7 +457,15 @@
 			<div class="c-meal__image-container" style="background-image: url(img/restaurant<%- id %>.png);">
 				<h2 class="c-meal__detail-title"><%- name %></h2>
 				<ul class="c-meal__icons">
-					<li class="c-meal__icon"></li>
+					<% if (restrictions.veggie) { %>
+						<li class="c-meal__icon"><img src="img/icon_veggie-inactive.png" alt="Vegetarian" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.vegan) { %>
+						<li class="c-meal__icon"><img src="img/icon_vegan-inactive.png" alt="Vegan" class="u-max-full-width"></li>
+					<% } %>
+					<% if (restrictions.gf) { %>
+						<li class="c-meal__icon"><img src="img/icon_gf-inactive.png" alt="GF" class="u-max-full-width"></li>
+					<% } %>
 				</ul>
 			</div>
 			<div class="c-restaurant__content u-full-padding">

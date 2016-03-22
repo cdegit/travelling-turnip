@@ -256,6 +256,25 @@ header.c--transparent + .c-content {
 	background-size: cover;
 }
 
+.c-meal__icons {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.c-meal__icon {
+	width: 40px;
+	margin-bottom: 5px;
+}
+
+.c-meal__icon + .c-meal__icon {
+	margin-left: 5px;
+}
+
+.c-meal__icon:last-child {
+	margin-right: 10px;
+}
+
 .c-meal__content {
 	padding: 20px;
 }

@@ -91,9 +91,9 @@ $(function(){
 
       	setSavedIcon: function() {
       		if (this.model.get('saved')) {
-      			this.$el.find('.c-icon').attr('src', 'img/icon_full-heart.png');
+      			this.$el.find('.c-heart').attr('src', 'img/icon_full-heart.png');
       		} else {
-      			this.$el.find('.c-icon').attr('src', 'img/icon_empty-heart.png');
+      			this.$el.find('.c-heart').attr('src', 'img/icon_empty-heart.png');
       		}
       	}
 	});
