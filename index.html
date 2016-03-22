@@ -423,14 +423,14 @@
 				<a href="#restaurants/1" class="c-marker js-resto1">
 					<img src="img/icon_map-marker.png">
 				</a>
-				<a href="#restaurants/1" class="c-marker js-resto2">
+				<a href="#restaurants/2" class="c-marker js-resto2">
 					<img src="img/icon_map-marker.png">
 				</a>
 			</div>
 		</script>
 
 		<script type="text/template" id="restaurant-template">
-			<div class="c-meal__image-container" style="background-image: url(http://placehold.it/411x150);">
+			<div class="c-meal__image-container" style="background-image: url(img/restaurant<%- id %>.png);">
 				<h2 class="c-meal__detail-title"><%- name %></h2>
 				<ul class="c-meal__icons">
 					<li class="c-meal__icon"></li>
@@ -438,7 +438,7 @@
 			</div>
 			<div class="c-restaurant__content u-full-padding">
 				<div class="c-arrange c--space-between c--center">
-					<img src="img/stars-3.png">
+					<img src="img/stars-<%- rating %>.png">
 					<button class="js-toggle-saved"><img src="img/icon_empty-heart.png" class="c-icon c-heart"></button>
 				</div>
 

@@ -90,6 +90,7 @@ var defaultData = {
 			vegan: false,
 			gf: false
 		},
+		rating: 3,
 		desc: 'We serve homemade pizza, lasagna, and more!',
 		saved: false,
 		site: '',
@@ -107,7 +108,8 @@ var defaultData = {
 			vegan: true,
 			gf: false
 		},
-		desc: 'Welcome to Roma’s finest restaurant, serving excellent traditional dishes that will satisfy your cravings. We have over a decade of experience!',
+		rating: 4,
+		desc: 'Welcome to Roma\'s finest restaurant, serving excellent traditional dishes that will satisfy your cravings. We have over a decade of experience!',
 		saved: false,
 		site: 'VIADEICASTANI.IT',
 		phone: '+39 06 230 4855',

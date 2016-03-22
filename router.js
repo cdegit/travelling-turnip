@@ -121,7 +121,6 @@ $(function() {
 	    	defaultData.restaurants.forEach(function(restaurant) {
 				Turnip.Restaurants.create(restaurant);
 	    	});
-	    	Turnip.Restaurants.sync();
 	    }
 
 		var resto = Turnip.Restaurants.get(id);

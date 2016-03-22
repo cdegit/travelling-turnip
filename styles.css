@@ -253,6 +253,7 @@ header.c--transparent + .c-content {
 
 	background-repeat: no-repeat;
 	background-position: center center;
+	background-size: cover;
 }
 
 .c-meal__content {
