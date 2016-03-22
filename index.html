@@ -150,7 +150,11 @@
 
 		<script type="text/template" id="header-close-template">
 			<div class="c-back-header">
-				<button class="c-icon-button js-back"><img src="img/icon_close.png" class="c-icon"></button>
+				<% if (shouldClose) { %>
+					<button class="c-icon-button js-close"><img src="img/icon_close.png" class="c-icon"></button>
+				<% } else { %>
+					<button class="c-icon-button js-back"><img src="img/icon_close.png" class="c-icon"></button>
+				<% } %>
 				<div class="c-page-title"><%- title %></div>
 			</div>
 		</script>

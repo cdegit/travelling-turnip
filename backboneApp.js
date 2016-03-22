@@ -255,6 +255,7 @@ $(function(){
 
 		events: {
 			'click .js-back': 'goBack',
+			'click .js-close': 'goToHome',
 			'click .c-saved-nav a': 'selectSavedTab'
 		},
 
@@ -290,6 +291,9 @@ $(function(){
 		},
 
 		showCloseHeader: function(data) {
+			if (data.shouldClose == undefined) {
+				data.shouldClose = false;
+			}
 			this.render('closeTemplate', data);
 		},
 
@@ -320,6 +324,10 @@ $(function(){
 
 		goBack: function() {
 			window.history.back();
+		},
+
+		goToHome: function() {
+			Turnip.Router.navigate('meals', {trigger: true});
 		},
 
 		selectSavedTab: function(e) {

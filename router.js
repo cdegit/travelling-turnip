@@ -106,7 +106,7 @@ $(function() {
 
 	router.on('route:addMeal', function() {
 		Turnip.AddMealView.render();
-		Turnip.HeaderView.showCloseHeader({title: 'Add Meal'});
+		Turnip.HeaderView.showCloseHeader({title: 'Add Meal', shouldClose: true});
 	});
 
 	router.on('route:addRecipe', function(id) {
