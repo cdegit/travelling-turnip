@@ -155,11 +155,8 @@ $(function() {
 	});
 
 	router.on('route:account', function() {
-		if (Turnip.User.get('loggedIn')) {
-			Turnip.ModalView.openModal('accountLoggedInTemplate');
-		} else {
-			Turnip.ModalView.openModal('accountLoggedOutTemplate');
-		}
+		Turnip.AccountView.render();
+		Turnip.HeaderView.showBackHeader({title: 'Account'});
 	});
 
 	router.on('route:settings', function() {

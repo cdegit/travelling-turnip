@@ -164,7 +164,7 @@ $(function(){
 		phraseComponents: [],
 
 		events: {
-			'submit form': 'addNewPhrase'
+			'submit .js-phrases-form': 'addNewPhrase'
 		},
 
 	    initialize: function() {
@@ -372,6 +372,49 @@ $(function(){
 		}
 	});
 
+	var AccountView = Backbone.View.extend({
+		el: $('#main'),
+		loggedOutTemplate: _.template($('#account-logged-out-template').html()),
+		loggedInTemplate: _.template($('#account-logged-in-template').html()),
+
+		events: {
+			'submit .js-login-form': 'login',
+			'click .js-logout': 'logout'
+		},
+
+		initialize: function() {
+			turnip.User.fetch();
+			this.model = turnip.User;
+		},
+
+		render: function() {
+			var templateName;
+
+			if (this.model.get('loggedIn')) {
+				templateName = 'loggedInTemplate';
+			} else {
+				templateName = 'loggedOutTemplate';
+			}
+
+			this.$el.html(this[templateName](this.model.toJSON()));
+			return this.$el;
+		},
+
+		login: function(e) {
+			var username = this.$el.find('input[type=text]').val();
+			e.preventDefault();
+			turnip.User.login(username);
+
+			this.render();
+		},
+
+		logout: function() {
+			turnip.User.logout();
+
+			this.render();
+		}
+	});
+
 	var ModalView = Backbone.View.extend({
 		el: $('.c-modal-container'),
 		accountLoggedOutTemplate: _.template($('#account-logged-out-template').html()),
@@ -470,6 +513,7 @@ $(function(){
 	turnip.FooterView = new FooterView;
 	turnip.ModalView = new ModalView;
 
+	turnip.AccountView = new AccountView;
 	turnip.SettingsView = new SettingsView;
 
 	turnip.MealView = MealView;

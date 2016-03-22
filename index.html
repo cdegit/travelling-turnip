@@ -275,26 +275,39 @@
 		</script>
 
 		<script type="text/template" id="account-logged-out-template">
-			<img src="img/icon_guest.png" alt="Logged in as Guest">
+			<div class="u-full-padding">
+				<img src="img/icon_guest.png" alt="Logged in as Guest">
 
-			<form>
-				<input type="text" class="c-field u-margin-top-md" placeholder="Username">
-				<input type="password" class="c-field" placeholder="Password">
+				<hr>
 
-				<div class="c-button-container c--right u-margin-top-md">
-					<input type="submit" class="c-button c--secondary" value="Log In">
+				<form class="js-login-form">
+					<input type="text" class="c-field u-margin-top-md" placeholder="Username">
+					<input type="password" class="c-field" placeholder="Password">
+
+					<div class="c-button-container c--right u-margin-top-md">
+						<input type="submit" class="c-button c--secondary" value="Log In">
+					</div>
+				</form>
+
+				<div class="u-text-center u-margin-top-lg">
+					<span class="c-blue-text">Not a member?</span>
+					<a class="c-button c--primary u-margin-top-md">Create an account</a>
 				</div>
-			</form>
-
-			<div class="u-text-center u-margin-top-lg">
-				<span class="c-blue-text">Not a member?</span>
-				<a class="c-button c--primary u-margin-top-md">Create an account</a>
 			</div>
 		</script>
 
 		<script type="text/template" id="account-logged-in-template">
-			Logged in as <%- name %>
-			<a class="c-button c--secondary u-margin-top-md js-logout">Log out</a>
+			<div class="u-full-padding">
+				Logged in as <%- name %>
+
+				<hr>
+
+				<h2 class="t-title">Dietary Restrictions</h2>
+
+				<div class="u-text-center u-margin-top-lg">
+					<a class="c-button c--primary js-logout">Log out</a>
+				</div>
+			</div>
 		</script>
 
 		<script type="text/template" id="phrase-list-template">
@@ -326,7 +339,7 @@
 			<div class="js-phrases-view c-phrases-view">
 				<span class="c-recipe__title">What do you want to say?</span>
 
-				<form class="u-margin-top-md">
+				<form class="js-phrases-form" class="u-margin-top-md">
 					<% _.each(phrases, function(phrase, index){ %>
 						<label class="c-checkbox-field">
 							<span class="c-checkbox-label"><%- phrase.english %></span>

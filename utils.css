@@ -22,6 +22,10 @@
 	max-width: 100%;
 }
 
+.u-full-padding {
+	padding: 20px;
+}
+
 .c-arrange {
 	display: flex;
 }
