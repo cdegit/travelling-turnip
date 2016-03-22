@@ -47,7 +47,11 @@ var defaultData = {
 			},{
 				eng: '1 small head radicchio, cut into 1-inch pieces',
 				ital: '1 piccolo radicchio testa, tagliato in pezzi da 1 pollice'
-			}]
+			}],
+			instructions: [
+				'Do something',
+				'Do something else'
+			]
 		}]
 	},{
 		id: 2,
@@ -79,7 +83,11 @@ var defaultData = {
 			ingredients: [{
 				eng: '2 tablespoons red-wine vinegar',
 				ital: '2 cucchiai di aceto di vino rosso'
-			}]
+			}],
+			instructions: [
+				'Do something',
+				'Do something else'
+			]
 		}]
 	}],
 	restaurants: [{

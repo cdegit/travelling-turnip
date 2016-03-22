@@ -87,5 +87,153 @@ $(function() {
       	}
 	});
 
+	var AddRecipeView = Backbone.View.extend({
+		el: $('#main'), 
+		template: _.template($('#add-recipe-template').html()),
+		dietaryRestrictions: {
+			veggie: false,
+			vegan: false,
+			gf: false
+		},
+		mealId: -1,
+
+		events: {
+			'submit .js-add-recipe-form': 'addRecipe',
+			'click .js-recipe-dietary-restrictions .js-veggie-toggle': 'toggleVeggie',
+			'click .js-recipe-dietary-restrictions .js-vegan-toggle': 'toggleVegan',
+			'click .js-recipe-dietary-restrictions .js-gf-toggle': 'toggleGF',
+			'click .js-add-ingredient': 'addIngredient',
+			'click .js-add-instruction': 'addInstruction'
+		},
+
+		render: function(mealId) {
+			this.mealId = mealId;
+			this.$el.html(this.template());
+			return this.$el;
+		},
+
+		addRecipe: function(e) {
+			var meal = Turnip.Meals.get(this.mealId);
+			var recipeData = {
+				id: meal.get('recipes').length + 1,
+				mealId: this.mealId,
+				restrictions: this.dietaryRestrictions,
+				excerpt: '',
+				ingredients: [],
+				instructions: []
+			};
+
+			var $fields = this.$el.find('[name=title], [name=prepTime], [name=cookTime]');
+
+			e.preventDefault();
+
+			$fields.each(function(index, field) {
+				var key = field.name;
+				recipeData[key] = $(field).val();
+			});
+
+			this.getIngredients(recipeData);
+			this.getInstructions(recipeData);
+
+			var recipe = new Turnip.Recipe(recipeData);
+			var mealRecipes = meal.get('recipes');
+
+			mealRecipes.push(recipe);
+
+			meal.save({
+				recipes: mealRecipes
+			});
+
+			window.history.back();
+		},
+
+		addIngredient: function() {
+			var count = this.$el.find('.c-ingredient').length + 1;
+			this.$el.find('.c-ingredients').append('<input type="text" class="c-field c-ingredient" placeholder="Ingredient ' + count + ', Amount" name="ing' + count + '">');
+		},
+
+		addInstruction: function() {
+			var count = this.$el.find('.c-instruction').length + 1;
+			this.$el.find('.c-instructions').append('<input type="text" class="c-field c-instruction" placeholder="Instruction ' + count + '" name="inst' + count + '">');
+		},
+
+		getIngredients: function(recipeData) {
+			var $ingredients = this.$el.find('.c-ingredient');
+
+			var $filteredIngredients = $ingredients.filter(function(index, ingredient) {
+				return $(ingredient).val().length > 0;
+			});
+
+			$filteredIngredients.each(function(index, ingredient) {
+				var val = $(ingredient).val();
+
+				recipeData.ingredients.push({
+					eng: val,
+					ital: 'Italian translation here'
+				});
+				recipeData.excerpt += val.toUpperCase();
+
+				if (index < $filteredIngredients.length - 1) {
+					recipeData.excerpt += ', ';
+				}
+			});
+
+			if (recipeData.excerpt.length > 30) {
+				recipeData.excerpt = recipeData.excerpt.substring(0, 30) + '...';
+			}
+		},
+
+		getInstructions: function(recipeData) {
+			var $instructions = this.$el.find('.c-instruction');
+			var $filteredInstructions = $instructions.filter(function(index, instruction) {
+				return $(instruction).val().length > 0;
+			});
+
+			$filteredInstructions.each(function(index, instruction) {
+				recipeData.instructions.push($(instruction).val());
+			});
+		},
+
+		toggleVeggie: function() {
+      		this.dietaryRestrictions.veggie = !this.dietaryRestrictions.veggie;
+      		this.setVeggieIcon();
+      	},
+
+      	setVeggieIcon: function() {
+      		if (this.dietaryRestrictions.veggie) {
+      			this.$el.find('.js-veggie-toggle img').attr('src', 'img/icon_veggie-active.png');
+      		} else {
+      			this.$el.find('.js-veggie-toggle img').attr('src', 'img/icon_veggie-inactive.png');
+      		}
+      	},
+
+      	toggleVegan: function() {
+      		this.dietaryRestrictions.vegan = !this.dietaryRestrictions.vegan;
+      		this.setVeganIcon();
+      	},
+
+      	setVeganIcon: function() {
+      		if (this.dietaryRestrictions.vegan) {
+      			this.$el.find('.js-vegan-toggle img').attr('src', 'img/icon_vegan-active.png');
+      		} else {
+      			this.$el.find('.js-vegan-toggle img').attr('src', 'img/icon_vegan-inactive.png');
+      		}
+      	},
+
+      	toggleGF: function() {
+      		this.dietaryRestrictions.gf = !this.dietaryRestrictions.gf;
+      		this.setGFIcon();
+      	},
+
+      	setGFIcon: function() {
+      		if (this.dietaryRestrictions.gf) {
+      			this.$el.find('.js-gf-toggle img').attr('src', 'img/icon_gf-active.png');
+      		} else {
+      			this.$el.find('.js-gf-toggle img').attr('src', 'img/icon_gf-inactive.png');
+      		}
+      	}
+	});
+
 	Turnip.AddMealView = new AddMealView;
+	Turnip.AddRecipeView = new AddRecipeView;
 });

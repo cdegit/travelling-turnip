@@ -183,6 +183,11 @@ hr {
 	margin-top: 10px;
 }
 
+.c-field + .c-field.c--inline {
+	margin-top: 0;
+	margin-left: 5px;
+}
+
 textarea.c-field {
 	height: 80px;
 }

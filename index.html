@@ -295,6 +295,13 @@
 						<div class="t-grey"><%- ingredient.ital %></div>
 					</div>
 				<% }); %>
+
+				<h2 class="t-title u-margin-top-lg">Instructions</h2>
+				<% _.each(instructions, function(instruction, index) { %>
+					<div class="c-recipe__instruction u-margin-top-md">
+						<div class="t-grey">Step <%- index + 1 %>: <%- instruction %></div>
+					</div>
+				<% }); %>
 			</div>
 		</script>
 
@@ -532,6 +539,68 @@
 
 					<div class="u-text-center u-margin-top-lg">
 						<input type="submit" class="c-button c--primary" value="Add Meal">
+					</div>
+				</form>
+			</div>
+		</script>
+
+		<script type="text/template" id="add-recipe-template">
+			<div class="u-full-padding">
+				<form class="js-add-recipe-form">
+					<input type="text" class="c-field" placeholder="Recipe Name" name="title">
+					<div class="c-arrange u-margin-top-md">
+						<input type="text" class="c-field c--inline" placeholder="Prep Time" name="prepTime">
+						<input type="text" class="c-field c--inline" placeholder="Cook Time" name="cookTime">
+					</div>
+
+					<h2 class="t-title u-margin-top-lg">Ingredients</h2>
+					<div class="c-ingredients">
+						<input type="text" class="c-field c-ingredient" placeholder="Ingredient 1, Amount" name="ing1">
+						<input type="text" class="c-field c-ingredient" placeholder="Ingredient 2, Amount" name="ing2">
+					</div>
+					<div class="c-arrange c--right u-margin-top-md">
+						<img src="img/icon_add-ingredient.png" class="js-add-ingredient">
+					</div>
+
+					<h2 class="t-title u-margin-top-lg">Instructions</h2>
+					<div class="c-instructions">
+						<input type="text" class="c-field c-instruction" placeholder="Instruction 1" name="inst1">
+						<input type="text" class="c-field c-instruction" placeholder="Instruction 2" name="inst2">
+					</div>
+					<div class="c-arrange c--right u-margin-top-md">
+						<img src="img/icon_add-ingredient.png" class="js-add-instruction">
+					</div>
+
+					<h2 class="t-title u-margin-top-lg">Photos</h2>
+					<img src="img/add-photo.png" alt="Add a photo">
+
+					<div class="c-dietary-restriction__container js-recipe-dietary-restrictions">
+						<h2 class="t-title">Dietary Restrictions</h2>
+
+						<div class="c-arrange c--space-between">
+							<div class="c-dietary-restriction js-veggie-toggle">
+								<img class="c-icon" src="img/icon_veggie-inactive.png">
+								<div class="t-grey t--upper">Vegetarian</div>
+							</div>
+							<div class="c-dietary-restriction js-vegan-toggle">
+								<img class="c-icon" src="img/icon_vegan-inactive.png">
+								<div class="t-grey t--upper">Vegan</div>
+							</div>
+							<div class="c-dietary-restriction js-gf-toggle">
+								<img class="c-icon" src="img/icon_gf-inactive.png">
+								<div class="t-grey t--upper">Gluten Free</div>
+							</div>
+						</div>
+					</div>
+
+					<label class="c-checkbox-field">
+						<span class="c-checkbox-label">Submit recipe to the Travelling Turnip community</span>
+						<input type="checkbox" name="submit-to-community">
+						<span class="c-checkbox-icon"></span>
+					</label>
+
+					<div class="u-text-center u-margin-top-lg">
+						<input type="submit" class="c-button c--primary" value="Create Recipe">
 					</div>
 				</form>
 			</div>

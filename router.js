@@ -5,7 +5,9 @@ $(function() {
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
 			'meal/:id/recipes/:rid': 'recipeDetail',
+
 			'addMeal': 'addMeal',
+			'add/meal/:id/recipe': 'addRecipe',
 
 			'map': 'map',
 			'restaurants/:id': 'restaurantDetail',
@@ -61,7 +63,7 @@ $(function() {
 			}
 
 			// TODO: Do this in a less bad way
-			$("#main").append('<div class="u-full-padding"><a href="#addRecipe"><img src="img/button_add-recipe.png"></a></div>');
+			$("#main").append('<div class="u-full-padding"><a href="#add/meal/' + meal.get('id') + '/recipe"><img src="img/button_add-recipe.png"></a></div>');
 
  			Turnip.HeaderView.showBackHeader({title: meal.get('title') + ' Recipes'});
 		} else {
@@ -90,6 +92,10 @@ $(function() {
 
 	router.on('route:addMeal', function() {
 		Turnip.AddMealView.render();
+	});
+
+	router.on('route:addRecipe', function(id) {
+		Turnip.AddRecipeView.render(id);
 	});
 
 	router.on('route:defaultRoute', function(id) {

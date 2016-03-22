@@ -53,3 +53,7 @@
 .c-arrange.c--center {
 	align-items: center;
 }
+
+.c-arrange.c--right {
+	justify-content: flex-end;
+}
