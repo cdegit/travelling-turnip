@@ -566,3 +566,21 @@ header.c--transparent + .c-content {
 .c-dietary-restriction .t-grey {
 	margin-top: -12px;
 }
+
+.c-map {
+	position: relative;
+}
+
+.c-marker {
+	position: absolute;
+}
+
+.c-marker.js-resto1 {
+	top: 100px;
+	left: 100px;
+}
+
+.c-marker.js-resto2 {
+	top: 520px;
+	left: 250px;
+}

@@ -6,6 +6,8 @@ $(function() {
 			'meal/:id/recipes': 'mealRecipes',
 			'meal/:id/recipes/:rid': 'recipeDetail',
 
+			'map': 'map',
+
 			'phrases': 'phrases',
 			'phrases/new': 'createPhrase',
 
@@ -104,6 +106,11 @@ $(function() {
 
 	    $('.c-onboarding').empty();
 	    $('.c-welcome').empty();
+	});
+
+	router.on('route:map', function() {
+		Turnip.MapView.render();
+		Turnip.HeaderView.showLocationHeader();
 	});
 
 	router.on('route:savedMeals', function() {

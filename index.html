@@ -21,6 +21,7 @@
 		<script src="backboneApp.js"></script>
 		<script src="phrases.js"></script>
 		<script src="account.js"></script>
+		<script src="map.js"></script>
 		<script src="router.js"></script>
 		<title>Travelling Turnip Prototype</title>
 	</head>
@@ -42,7 +43,7 @@
 						</a>
 					</li>
 					<li class="c-nav-icon c--restaurants">
-						<a>
+						<a href="#map">
 							<img src="img/icon_map.png" alt="Restaurants" class="c-icon">
 						</a>
 					</li>
@@ -68,6 +69,7 @@
 		<div class="c-onboarding"></div>
 
 		<div class="c-welcome"></div>
+
 
 		<!-- Just templates from here on out -->
 
@@ -412,6 +414,18 @@
 					<input type="checkbox" name="faved">
 					<span class="c-checkbox-icon"></span>
 				</label>
+			</div>
+		</script>
+
+		<script type="text/template" id="map-template">
+			<div class="c-map">
+				<img src="img/map.png">
+				<a class="c-marker js-resto1">
+					<img src="img/icon_map-marker.png">
+				</a>
+				<a class="c-marker js-resto2">
+					<img src="img/icon_map-marker.png">
+				</a>
 			</div>
 		</script>
 	</body>
