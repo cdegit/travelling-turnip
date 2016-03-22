@@ -263,6 +263,12 @@ $(function(){
 			} else {
 				this.$el.removeClass('c--transparent');
 			}
+
+			if (templateName == 'savedTemplate') {
+				this.$el.addClass('c--extended');
+			} else {
+				this.$el.removeClass('c--extended');
+			}			
 		},
 
 		showLocationHeader: function() {

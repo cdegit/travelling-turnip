@@ -23,6 +23,10 @@ header {
 	z-index: 1;
 }
 
+header.c--extended + .c-content{
+	margin-top: 100px;
+}
+
 .c-header-icons {
 	position: absolute;
 	right: 0;
