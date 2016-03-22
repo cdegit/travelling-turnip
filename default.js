@@ -19,7 +19,7 @@ var defaultData = {
 			title: 'Nonna\'s Focaccia',
 			prepTime: '10 mins',
 			cookTime: '20 mins',
-			excerpt: '1 ENVELOPE (2 1/4 TSPS) ACTIVE DRY YEAST...',
+			excerpt: '2 tablespoons red-wine vinegar...',
 			saved: false,
 			restrictions: {
 				veggie: true,
@@ -73,7 +73,7 @@ var defaultData = {
 			title: 'Nonna\'s Focaccia',
 			prepTime: '10 mins',
 			cookTime: '10 mins',
-			excerpt: '1 ENVELOPE (2 1/4 TSPS) ACTIVE DRY YEAST...',
+			excerpt: '2 tablespoons red-wine vinegar...',
 			saved: false,
 			restrictions: {
 				veggie: true,

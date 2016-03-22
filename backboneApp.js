@@ -104,6 +104,7 @@ $(function(){
 		className: 'c-recipe',
 		template: _.template($('#recipe-template').html()),
 		detailTemplate: _.template($('#recipe-detail-template').html()),
+		cardTemplate: _.template($('#recipe-card-template').html()),
 
 		events: {
 			'click .c-recipe__list-view': 'showDetailView',
@@ -120,6 +121,11 @@ $(function(){
 			this.toggleSavedIcon();
       		
       		return this;
+      	},
+
+      	renderCard: function() {
+      		this.$el.html(this.cardTemplate(this.model.toJSON()));
+      		return this.$el;
       	},
 
       	showDetailView: function() {
@@ -265,8 +271,10 @@ $(function(){
 			}
 
 			if (templateName == 'savedTemplate') {
+				$('html').addClass('c--taupe');
 				this.$el.addClass('c--extended');
 			} else {
+				$('html').removeClass('c--taupe');
 				this.$el.removeClass('c--extended');
 			}			
 		},

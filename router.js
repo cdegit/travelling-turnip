@@ -195,7 +195,7 @@ $(function() {
 			savedRecipes.forEach(function(recipe) {
 				var model = new Turnip.Recipe(recipe);
 				var view = new Turnip.RecipeView({model: model});
- 				$("#main").append(view.render().el);
+ 				$("#main").append(view.renderCard());
 			});
 		} else {
 			$('#main').append('<div class="u-full-padding t-body">You don\'t have any recipes saved. Why not go to the meals page and add your favourites?</div>');

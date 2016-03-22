@@ -2,6 +2,10 @@
 	box-sizing: border-box;
 }
 
+html.c--taupe {
+	background-color: #EEEDE8;
+}
+
 body {
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
@@ -346,6 +350,14 @@ header.c--transparent + .c-content {
 	letter-spacing: 2px;
 	color: white;
 	text-shadow: black 1px 1px 1px;
+}
+
+.c-recipe {
+	background: white;
+}
+
+.c-recipe + .c-recipe {
+	margin-top: 20px;
 }
 
 .c-recipe__list-view {
