@@ -48,13 +48,20 @@ $(function() {
 		var meal = Turnip.Meals.get(id);
 
 		if (meal) {
+			var recipes = meal.get('recipes');
+
 			$('#main').empty();
 
-			meal.get('recipes').forEach(function(recipe) {
-				var model = new Turnip.Recipe(recipe)
-				var view = new Turnip.RecipeView({model: model});
- 				$("#main").append(view.render().el);
- 			});
+			if (recipes) {
+				recipes.forEach(function(recipe) {
+					var model = new Turnip.Recipe(recipe)
+					var view = new Turnip.RecipeView({model: model});
+	 				$("#main").append(view.render().el);
+	 			});
+			}
+
+			// TODO: Do this in a less bad way
+			$("#main").append('<div class="u-full-padding"><a href="#addRecipe"><img src="img/button_add-recipe.png"></a></div>');
 
  			Turnip.HeaderView.showBackHeader({title: meal.get('title') + ' Recipes'});
 		} else {
