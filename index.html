@@ -22,6 +22,7 @@
 		<script src="phrases.js"></script>
 		<script src="account.js"></script>
 		<script src="map.js"></script>
+		<script src="add.js"></script>
 		<script src="router.js"></script>
 		<title>Travelling Turnip Prototype</title>
 	</head>
@@ -337,7 +338,7 @@
 
 				<hr>
 
-				<div class="c-dietary-restriction__container">
+				<div class="c-dietary-restriction__container js-account-dietary-restrictions">
 					<h2 class="t-title">Dietary Restrictions</h2>
 
 					<div class="c-arrange c--space-between">
@@ -486,7 +487,7 @@
 				<hr class="u-margin-top-lg">
 
 				<h3 class="t-title t-h3">
-					Meals you've tried
+					Meals you have tried
 					<img src="img/icon_add-resto-meal.png">
 				</h3>
 
@@ -497,6 +498,42 @@
 				<% _.each(availableMeals, function(availableMeal, index){ %>
 					<div class="t-grey"><%- availableMeal %></div>
 				<% }); %>
+			</div>
+		</script>
+
+		<script type="text/template" id="add-meal-template">
+			<div class="u-full-padding">
+				<form class="js-add-meal-form">
+					<input type="text" class="c-field" placeholder="Meal Name" name="title">
+					<textarea class="c-field" placeholder="About" name="about"></textarea>
+					<textarea class="c-field" placeholder="History" name="history"></textarea>
+
+					<div class="c-dietary-restriction__container js-meal-dietary-restrictions">
+						<h2 class="t-title">Dietary Restrictions</h2>
+
+						<div class="c-arrange c--space-between">
+							<div class="c-dietary-restriction js-veggie-toggle">
+								<img class="c-icon" src="img/icon_veggie-inactive.png">
+								<div class="t-grey t--upper">Vegetarian</div>
+							</div>
+							<div class="c-dietary-restriction js-vegan-toggle">
+								<img class="c-icon" src="img/icon_vegan-inactive.png">
+								<div class="t-grey t--upper">Vegan</div>
+							</div>
+							<div class="c-dietary-restriction js-gf-toggle">
+								<img class="c-icon" src="img/icon_gf-inactive.png">
+								<div class="t-grey t--upper">Gluten Free</div>
+							</div>
+						</div>
+					</div>
+
+					<h2 class="t-title u-margin-top-lg">Photos</h2>
+					<img src="img/add-photo.png" alt="Add a photo">
+
+					<div class="u-text-center u-margin-top-lg">
+						<input type="submit" class="c-button c--primary" value="Add Meal">
+					</div>
+				</form>
 			</div>
 		</script>
 	</body>

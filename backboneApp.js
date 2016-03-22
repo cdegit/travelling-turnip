@@ -45,6 +45,7 @@ $(function(){
 	});
 
 	var Meal = Backbone.Model.extend({
+		localStorage: new Backbone.LocalStorage('meals-backbone'),
 		toggle: function() {
 			this.save({saved: !this.get("saved")});
 		}
@@ -334,6 +335,7 @@ $(function(){
 	turnip.Recipe = Recipe;
 	turnip.RecipeView = RecipeView;
 
+	turnip.Meal = Meal;
 	turnip.Meals = Meals;
 	turnip.MealsView = new MealsContainerView;
 

@@ -7,9 +7,9 @@ $(function() {
 		events: {
 			'submit .js-login-form': 'login',
 			'click .js-logout': 'logout',
-			'click .js-veggie-toggle': 'toggleVeggie',
-			'click .js-vegan-toggle': 'toggleVegan',
-			'click .js-gf-toggle': 'toggleGF'
+			'click .js-account-dietary-restrictions .js-veggie-toggle': 'toggleVeggie',
+			'click .js-account-dietary-restrictions .js-vegan-toggle': 'toggleVegan',
+			'click .js-account-dietary-restrictions .js-gf-toggle': 'toggleGF'
 		},
 
 		initialize: function() {

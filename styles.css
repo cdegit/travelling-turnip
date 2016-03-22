@@ -183,6 +183,10 @@ hr {
 	margin-top: 10px;
 }
 
+textarea.c-field {
+	height: 80px;
+}
+
 ::-webkit-input-placeholder {
    color: #939FA6;
    text-transform: uppercase;

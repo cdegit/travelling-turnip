@@ -5,6 +5,7 @@ $(function() {
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
 			'meal/:id/recipes/:rid': 'recipeDetail',
+			'addMeal': 'addMeal',
 
 			'map': 'map',
 			'restaurants/:id': 'restaurantDetail',
@@ -80,6 +81,10 @@ $(function() {
 		}
 	});
 
+	router.on('route:addMeal', function() {
+		Turnip.AddMealView.render();
+	});
+
 	router.on('route:defaultRoute', function(id) {
 		if (!localStorage.getItem('onboarded')) {
 			router.navigate('onboarding', {trigger: true});
@@ -89,8 +94,6 @@ $(function() {
 		// Render the meals page
 		var $main = $("#main");
 		var initialMealsLength = Turnip.Meals.length;
-
-		Turnip.Meals.fetch();
 
 		$main.empty();
 
