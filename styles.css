@@ -638,3 +638,20 @@ header.c--transparent + .c-content {
 	top: 520px;
 	left: 250px;
 }
+
+.c-search {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	right: 0;
+}
+
+.c-search .c-field {
+	height: 60px;
+}
+
+.js-filter {
+	position: absolute;
+	top: 10px;
+	right: 0;
+}

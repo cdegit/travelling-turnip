@@ -206,6 +206,11 @@ $(function(){
      		$container.append(view.render().el);
 	    },
 
+	    showFilteredMeals: function(filteredMeals) {
+	    	this.clear();
+	    	filteredMeals.forEach(this.addOne);
+	    },
+
 	    clear: function() {
 	    	$('.c-meal-list').empty();
 	    }
@@ -250,13 +255,20 @@ $(function(){
 		closeTemplate: _.template($('#header-close-template').html()),
 		transparentTemplate: _.template($('#header-transparent-template').html()),
 		savedTemplate: _.template($('#header-saved-template').html()),
+		searchTemplate: _.template($('#header-search-template').html()),
 		phrasesTemplate: _.template($('#header-phrases-template').html()),
 		phrasesCreateTemplate: _.template($('#header-phrases-create-template').html()),
+
+		lastTemplate: '',
+		currentTemplate: '',
 
 		events: {
 			'click .js-back': 'goBack',
 			'click .js-close': 'goToHome',
-			'click .c-saved-nav a': 'selectSavedTab'
+			'click .js-close-search': 'closeSearch',
+			'click .c-saved-nav a': 'selectSavedTab',
+			'click [alt=search]': 'showSearch',
+			'change .js-search-field': 'applySearch'
 		},
 
 		render: function(templateName, data) {
@@ -279,6 +291,7 @@ $(function(){
 				this.$el.removeClass('c--extended');
 			}
 
+			this.lastTemplate = this.currentTemplate;
 			this.currentTemplate = templateName;
 		},
 
@@ -302,7 +315,17 @@ $(function(){
 		},
 
 		showSearch: function() {
+			this.render('searchTemplate');
+		},
 
+		closeSearch: function() {
+			this.currentTemplate = this.lastTemplate;
+			this.render(this.lastTemplate);
+
+			// Clear any searches you've applied
+			if (window.location.hash === '#meals') {
+				turnip.MealsView.showFilteredMeals(Turnip.Meals);
+			}
 		},
 
 		showSavedHeader: function(tab) {
@@ -333,6 +356,30 @@ $(function(){
 		selectSavedTab: function(e) {
 			$('.c-saved-nav .c--active').removeClass('c--active');
 			$(e.target).parents('li').addClass('c--active');
+		},
+
+		applySearch: function() {
+			var q = $('.js-search-field').val();
+			var queries = q.split(', ');
+			
+			// if a query like key:value, use where to see if it matches exactly?
+			// Or do like the includes search
+			if (window.location.hash === '#meals') {
+				filteredMeals = Turnip.Meals.filter(function(meal) {
+					// If it matches any of the queries
+					var matchedOne;
+					queries.forEach(function(query) {
+						if (meal.get('title').toLowerCase().includes(query.toLowerCase())) {
+							matchedOne = true;
+						}
+					});
+
+					return matchedOne;
+				});
+
+				// add filter to meals view
+				turnip.MealsView.showFilteredMeals(filteredMeals);
+			}
 		}
 	});
 
