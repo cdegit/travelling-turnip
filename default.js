@@ -106,7 +106,8 @@ var defaultData = {
 		hours: 'CLOSED NOW. OPENS AT 12:00PM',
 		availableMeals: [
 			'Vegan Lasagna',
-			'Homemade spaghetti with mushrooms'
+			'Homemade spaghetti with mushrooms',
+			'Rosemary Focaccia'
 		]
 	},{
 		id: 2,

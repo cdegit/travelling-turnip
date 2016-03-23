@@ -283,12 +283,22 @@ $(function(){
 				this.$el.removeClass('c--transparent');
 			}
 
-			if (templateName == 'savedTemplate') {
+			if (templateName == 'searchTemplate' || templateName == 'savedTemplate') {
 				$('html').addClass('c--taupe');
-				this.$el.addClass('c--extended');
 			} else {
 				$('html').removeClass('c--taupe');
+			}
+
+			if (templateName == 'savedTemplate') {
+				this.$el.addClass('c--extended');
+			} else {
 				this.$el.removeClass('c--extended');
+			}
+
+			if (templateName == 'searchTemplate') {
+				this.$el.addClass('c--extended-plus');
+			} else {
+				this.$el.removeClass('c--extended-plus');
 			}
 
 			this.lastTemplate = this.currentTemplate;
@@ -361,7 +371,7 @@ $(function(){
 		applySearch: function() {
 			var q = $('.js-search-field').val();
 			var queries = q.split(', ');
-			
+
 			// if a query like key:value, use where to see if it matches exactly?
 			// Or do like the includes search
 			if (window.location.hash === '#meals') {
@@ -379,6 +389,12 @@ $(function(){
 
 				// add filter to meals view
 				turnip.MealsView.showFilteredMeals(filteredMeals);
+			}
+
+			if (window.location.hash === '#map') {
+				// if meal:NAME then check if NAME in available meals for that resto
+				// not using an actual list view for this so tricky...........
+				// .... should i use an actual list view...... probably.........
 			}
 		}
 	});
