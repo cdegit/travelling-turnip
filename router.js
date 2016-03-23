@@ -8,6 +8,7 @@ $(function() {
 
 			'add': 'add',
 			'addMeal': 'addMeal',
+			'addRestaurant': 'addRestaurant',
 			'add/meal/:id/recipe': 'addRecipe',
 
 			'map': 'map',
@@ -113,6 +114,19 @@ $(function() {
 	router.on('route:addRecipe', function(id) {
 		Turnip.AddRecipeView.render(id);
 		Turnip.HeaderView.showCloseHeader({title: 'Add Recipe'});
+	});
+
+	router.on('route:addRestaurant', function() {
+		Turnip.Restaurants.fetch();
+
+		if (!Turnip.Restaurants.length) {
+	    	defaultData.restaurants.forEach(function(restaurant) {
+				Turnip.Restaurants.create(restaurant);
+	    	});
+	    }
+		
+		Turnip.AddRestaurantView.render();
+		Turnip.HeaderView.showCloseHeader({title: 'Add Restaurant', shouldClose: true});
 	});
 
 	router.on('route:defaultRoute', function(id) {

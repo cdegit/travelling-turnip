@@ -144,6 +144,17 @@ $(function() {
 				recipes: mealRecipes
 			});
 
+			// Add to this user's saved recipes
+			var saved = Turnip.User.get('savedRecipes');
+
+      		if (!saved) {
+      			saved = [];
+      		}
+
+			saved.push(recipe);
+      		Turnip.User.set('savedRecipes', saved);
+      		Turnip.User.save();
+
 			window.history.back();
 		},
 
@@ -234,6 +245,52 @@ $(function() {
       	}
 	});
 
+	var AddRestaurantView = Backbone.View.extend({
+		el: $('#main'), 
+		template: _.template($('#add-restaurant-template').html()),
+
+		dietaryRestrictions: {
+			veggie: false,
+			vegan: false,
+			gf: false
+		},
+
+		events: {
+			'submit .js-add-restaurant-form': 'addRestaurant',
+		},
+
+		render: function(mealId) {
+			this.$el.html(this.template());
+			return this.$el;
+		},
+
+		addRestaurant: function(e) {
+			var restaurantData = {
+				id: Turnip.Restaurants.length + 1,
+				restrictions: this.dietaryRestrictions,
+				rating: 3,
+				location: [200, 150],
+				site: '',
+				phone: '',
+				hours: 'Closed now. Open at 7:00AM',
+				availableMeals: []
+			};
+
+			var $fields = this.$el.find('.c-field');
+
+			e.preventDefault();
+
+			$fields.each(function(index, field) {
+				var key = field.name;
+				restaurantData[key] = $(field).val();
+			});
+
+			Turnip.Restaurants.create(restaurantData);
+			Turnip.Router.navigate('map', {trigger: true});
+		}
+	});
+
 	Turnip.AddMealView = new AddMealView;
 	Turnip.AddRecipeView = new AddRecipeView;
+	Turnip.AddRestaurantView = new AddRestaurantView;
 });
