@@ -189,6 +189,11 @@ hr {
 
 	border: none;
 	background-color: #EEEDE8;
+
+	color: #335B60;
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 1px;
 }
 
 .c-field + .c-field {
@@ -633,14 +638,9 @@ header.c--transparent + .c-content {
 	position: absolute;
 }
 
-.c-marker.js-resto1 {
-	top: 100px;
-	left: 100px;
-}
-
-.c-marker.js-resto2 {
-	top: 520px;
-	left: 250px;
+.c-marker__icon {
+	display: block;
+	margin: auto;
 }
 
 .c-search {
@@ -652,6 +652,11 @@ header.c--transparent + .c-content {
 
 .c-search .c-field {
 	height: 60px;
+}
+
+.js-search-field {
+	padding-left: 20px;
+	padding-right: 45px;
 }
 
 .js-filter {
