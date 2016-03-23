@@ -284,6 +284,9 @@ header.c--transparent + .c-content {
 
 	height: 150px;
 
+	/* Fallback for a missing image */
+	background-color: #E37353; 
+
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
@@ -372,7 +375,12 @@ header.c--transparent + .c-content {
 	background: white;
 }
 
-.c-recipe + .c-recipe, .c-restaurant + .c-restaurant {
+.c-recipe__title {
+	white-space: nowrap;
+}
+
+/* TODO Make this less silly. This is so it only does it on saved */
+.c--taupe .c-recipe + .c-recipe, .c--taupe .c-restaurant + .c-restaurant {
 	margin-top: 20px;
 }
 
