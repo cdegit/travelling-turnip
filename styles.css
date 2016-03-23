@@ -216,6 +216,13 @@ textarea.c-field {
    font-size: 12px;
 }
 
+.c-page-title a, 
+.c-page-title a:visited,
+.c-page-title__label a, 
+.c-page-title__label a:visited {
+	color: white;
+}
+
 .c-page-title {
 	margin: 10px;
 

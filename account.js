@@ -142,6 +142,16 @@ $(function() {
 		}
 	});
 
+	var LocationView = Backbone.View.extend({
+		el: $('#main'),
+		template: _.template($('#location-template').html()),
+		render: function() {
+			this.$el.html(this.template());
+			return this.$el;
+		}
+	});
+
 	Turnip.AccountView = new AccountView;
 	Turnip.SettingsView = new SettingsView;
+	Turnip.LocationView = new LocationView;
 });

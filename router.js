@@ -24,6 +24,7 @@ $(function() {
 			'account': 'account',
 			'account/create': 'createAccount',
 			'settings': 'settings',
+			'location': 'location',
 
 			'onboarding': 'onboarding',
 			'welcome': 'welcome',
@@ -257,6 +258,11 @@ $(function() {
 	router.on('route:settings', function() {
 		Turnip.SettingsView.render();
 		Turnip.HeaderView.showBackHeader({title: 'Settings'});
+	});
+
+	router.on('route:location', function() {
+		Turnip.LocationView.render();
+		Turnip.HeaderView.showCloseHeader({title: 'Location'});
 	});
 
 	router.on('route:onboarding', function() {
