@@ -143,10 +143,7 @@ $(function() {
 
 	router.on('route:map', function() {
 		Turnip.MapView.render();
-		Turnip.HeaderView.showLocationHeader();
-	});
 
-	router.on('route:restaurantDetail', function(id) {
 		Turnip.Restaurants.fetch();
 
 		if (!Turnip.Restaurants.length) {
@@ -155,6 +152,12 @@ $(function() {
 	    	});
 	    }
 
+		Turnip.renderRestaurantMarkers(Turnip.Restaurants);
+
+		Turnip.HeaderView.showLocationHeader();
+	});
+
+	router.on('route:restaurantDetail', function(id) {
 		var resto = Turnip.Restaurants.get(id);
 
 		if (resto) {

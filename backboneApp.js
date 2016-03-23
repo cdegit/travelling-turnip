@@ -70,7 +70,8 @@ $(function(){
 		detailTemplate: _.template($('#meal-detail-template').html()),
 
 		events: {
-			'click .js-toggle-saved' : 'toggleSaved'
+			'click .js-toggle-saved' : 'toggleSaved',
+			'click .js-show-restaurants': 'showRestaurants'
 		},
 
 		render: function(detail) {
@@ -96,6 +97,14 @@ $(function(){
       		} else {
       			this.$el.find('.c-heart').attr('src', 'img/icon_empty-heart.png');
       		}
+      	},
+
+      	showRestaurants: function() {
+      		// Automate searching for this meal on the map
+      		turnip.Router.navigate('map', {trigger: true});
+      		turnip.HeaderView.showSearch();
+      		$('.js-search-field').val('meal:' + this.model.get('title'));
+      		turnip.HeaderView.applySearch();
       	}
 	});
 
@@ -336,6 +345,10 @@ $(function(){
 			if (window.location.hash === '#meals') {
 				turnip.MealsView.showFilteredMeals(Turnip.Meals);
 			}
+
+			if (window.location.hash === '#map') {
+				Turnip.renderRestaurantMarkers(Turnip.Restaurants);
+			}
 		},
 
 		showSavedHeader: function(tab) {
@@ -392,9 +405,27 @@ $(function(){
 			}
 
 			if (window.location.hash === '#map') {
-				// if meal:NAME then check if NAME in available meals for that resto
-				// not using an actual list view for this so tricky...........
-				// .... should i use an actual list view...... probably.........
+				filteredRestaurants = Turnip.Restaurants.filter(function(restaurant) {
+					var matchedOne;
+					queries.forEach(function(query) {
+						// Can use meal:NAME to find restaurants that serve that specific meal
+						if (query.includes('meal:')) {
+							var val = query.split(':')[1].toLowerCase();
+
+							if (restaurant.get('availableMeals').join(' ').toLowerCase().includes(val)) {
+								matchedOne = true;
+							}
+						}
+
+						if (restaurant.get('name').toLowerCase().includes(query.toLowerCase())) {
+							matchedOne = true;
+						}
+					});
+
+					return matchedOne;
+				});
+
+				Turnip.renderRestaurantMarkers(filteredRestaurants);
 			}
 		}
 	});

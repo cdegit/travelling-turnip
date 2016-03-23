@@ -30,6 +30,7 @@ $(function() {
 		className: 'c-restaurant',
 		template: _.template($('#restaurant-template').html()),
 		cardTemplate: _.template($('#restaurant-card-template').html()),
+		markerTemplate: _.template($('#restaurant-marker-template').html()),
 
 		events: {
 			'click .js-toggle-saved' : 'toggleSaved'
@@ -44,6 +45,10 @@ $(function() {
       	renderCard: function() {
       		this.$el.html(this.cardTemplate(this.model.toJSON()));
       		return this.$el;
+      	},
+
+      	renderMarker: function() {
+      		return $(this.markerTemplate(this.model.toJSON()));
       	},
 
       	toggleSaved: function() {
@@ -61,7 +66,17 @@ $(function() {
       	}
 	});
 
+	var renderRestaurantMarkers = function(restaurants) {
+		$('.c-marker').remove();
+
+		restaurants.forEach(function(restaurant) {
+			var view = new Turnip.RestaurantView({model: restaurant});
+			$('.c-map').append(view.renderMarker());
+		});
+	}
+
 	Turnip.Restaurants = Restaurants;
 	Turnip.MapView = new MapView;
 	Turnip.RestaurantView = RestaurantView;
+	Turnip.renderRestaurantMarkers = renderRestaurantMarkers;
 });

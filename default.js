@@ -98,6 +98,7 @@ var defaultData = {
 			vegan: false,
 			gf: false
 		},
+		location: [100, 100],
 		rating: 3,
 		desc: 'We serve homemade pizza, lasagna, and more!',
 		saved: false,
@@ -117,6 +118,7 @@ var defaultData = {
 			vegan: true,
 			gf: false
 		},
+		location: [350, 250],
 		rating: 4,
 		desc: 'Welcome to Roma\'s finest restaurant, serving excellent traditional dishes that will satisfy your cravings. We have over a decade of experience!',
 		saved: false,

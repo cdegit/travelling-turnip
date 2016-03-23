@@ -251,7 +251,7 @@
 					<button class="js-toggle-saved"><img src="img/icon_empty-heart.png" class="c-icon c-heart"></button>
 					<div class="c-button-container">
 						<a href="#meal/<%- id %>" class="c-button">About</a>
-						<a class="c-button">Restaurants</a>
+						<a class="c-button js-show-restaurants">Restaurants</a>
 						<a href="#meal/<%- id %>/recipes" class="c-button">Recipes</a>
 					</div>
 				</div>
@@ -275,7 +275,7 @@
 			</div>
 			<div class="c-meal__actions c--dark">
 				<div class="c-button-container">
-					<a class="c-button c--light">Restaurants</a>
+					<a class="c-button c--light js-show-restaurants">Restaurants</a>
 					<a href="#meal/<%- id %>/recipes" class="c-button c--light">Recipes</a>
 				</div>
 			</div>
@@ -554,12 +554,6 @@
 		<script type="text/template" id="map-template">
 			<div class="c-map">
 				<img src="img/map.png">
-				<a href="#restaurants/1" class="c-marker js-resto1">
-					<img src="img/icon_map-marker.png">
-				</a>
-				<a href="#restaurants/2" class="c-marker js-resto2">
-					<img src="img/icon_map-marker.png">
-				</a>
 			</div>
 		</script>
 
@@ -639,6 +633,12 @@
 					<a href="https://www.google.ca/maps" class="c-button">Directions</a>
 				</div>
 			</div>
+		</script>
+
+		<script type="text/template" id="restaurant-marker-template">
+			<a href="#restaurants/<%- id %>" class="c-marker" style="top: <%- location[0] %>px; left: <%- location[1] %>px;">
+				<img src="img/icon_map-marker.png">
+			</a>
 		</script>
 
 		<script type="text/template" id="add-meal-template">
