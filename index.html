@@ -19,6 +19,7 @@
 
 		<script src="default.js"></script>
 		<script src="backboneApp.js"></script>
+		<script src="header.js"></script>
 		<script src="phrases.js"></script>
 		<script src="account.js"></script>
 		<script src="map.js"></script>
@@ -173,7 +174,6 @@
 				<ul>
 					<li><a href="#account"><img src="img/icon_user.png" alt="User Settings" class="c-icon"></a></li>
 					<li><a href="#settings"><img src="img/icon_settings.png" alt="Settings" class="c-icon"></a></li>
-					<li><img src="img/icon_search.png" alt="search" class="c-icon"></li>
 				</ul>
 			</nav>
 			<nav class="c-saved-nav">
@@ -198,6 +198,54 @@
 			<div class="c-search">
 				<input class="c-field js-search-field" type="text" placeholder="Type dish, restaurant, ingredient...">
 				<img src="img/icon_filter.png" alt="filter" class="js-filter c-icon">
+			</div>
+			<div class="c-filter">
+				<form class="u-full-padding js-filter-form">
+					<h2 class="t-title">Filter Search</h2>
+					<div class="c-dietary-restriction__container js-search-dietary-restrictions">
+						<div class="c-arrange c--space-between">
+							<div class="c-dietary-restriction js-veggie-toggle">
+								<img class="c-icon" src="img/icon_veggie-inactive.png">
+								<div class="t-grey t--upper">Vegetarian</div>
+							</div>
+							<div class="c-dietary-restriction js-vegan-toggle">
+								<img class="c-icon" src="img/icon_vegan-inactive.png">
+								<div class="t-grey t--upper">Vegan</div>
+							</div>
+							<div class="c-dietary-restriction js-gf-toggle">
+								<img class="c-icon" src="img/icon_gf-inactive.png">
+								<div class="t-grey t--upper">Gluten Free</div>
+							</div>
+						</div>
+					</div>
+
+					<label class="c-checkbox-field">
+						<span class="c-checkbox-label">Served Nearby</span>
+						<input type="checkbox" name="nearby">
+						<span class="c-checkbox-icon"></span>
+					</label>
+
+					<label class="c-checkbox-field">
+						<span class="c-checkbox-label">Recipes available</span>
+						<input type="checkbox" name="recipes-available">
+						<span class="c-checkbox-icon"></span>
+					</label>
+
+					<div class="c-arrange c--space-between">
+						<div class="t-grey t--upper">Sort by</div>
+						<div class="c-select">
+							<select class="c-select__input js-sort">
+								<option>Most to least popular</option>
+								<option>Least to most popular</option>
+							</select>
+							<div class="c-select__fake c-arrange c--right">
+								<div class="c-select__text t-grey t--upper"></div>
+								<img src="img/input_select.png" class="c-icon">
+							</div>
+						</div>
+					</div>
+
+				</form>
 			</div>
 		</script>
 
@@ -737,12 +785,6 @@
 						<input type="submit" class="c-button c--primary" value="Create Recipe">
 					</div>
 				</form>
-			</div>
-		</script>
-
-		<script type="text/template" id="filter-template">
-			<div class="u-full-padding">
-				filters go here
 			</div>
 		</script>
 	</body>

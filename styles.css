@@ -664,3 +664,31 @@ header.c--transparent + .c-content {
 	top: 10px;
 	right: 0;
 }
+
+.c-filter {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+
+    display: none;
+
+    background: white;
+    box-shadow: 0px 4px 7px rgba(35, 31, 32, 0.2);
+}
+
+.c-filter.c--active {
+	display: block;
+}
+
+.c-select__input {
+	opacity: 0;
+}
+
+.c-select__fake {
+	margin-top: -20px;
+}
+
+.c-select__fake .c-icon {
+	pointer-events: none;
+}
