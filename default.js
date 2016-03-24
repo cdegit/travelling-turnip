@@ -433,7 +433,7 @@ var defaultData = {
 		phone: '+39 06 230 4855',
 		hours: 'CLOSED NOW. OPENS AT 11:00AM',
 		availableMeals: [
-			'Vegan Antipasto',
+			'Veggie Antipasto Salad',
 			'Vegetarian thin crust avocado pizza',
 			'Eggplant Caponata'
 		]
@@ -453,7 +453,7 @@ var defaultData = {
 		phone: '+39 06 230 4855',
 		hours: 'CLOSED NOW. OPENS AT 11:00AM',
 		availableMeals: [
-			'Vegan Antipasto',
+			'Vegan Antipasto Salad',
 			'Vegetarian thin crust avocado pizza',
 			'Radicchio Salad'
 		]
