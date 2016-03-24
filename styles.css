@@ -85,7 +85,7 @@ header.c--extended-plus + .c-content {
 
 .c-saved-nav a {
 	padding: 10px;
-	
+
 	color: white;
 }
 
@@ -114,11 +114,36 @@ header.c--extended-plus + .c-content {
 	float: none;
 
 	border-bottom: 5px solid transparent;
-	opacity: 0.65;
+
+	transition: 0.5s;
 }
 
 .c-nav-icon.c--active {
 	border-bottom: 5px solid #E37453;
+}
+
+.c-nav-icon img {
+	opacity: 0.65;
+
+	transition: 0.75s;
+}
+
+.c-nav-icon.c--active img:not(.c-nav-icon__full-heart) {
+	opacity: 1;
+}
+
+.c-nav-icon .c-nav-icon__full-heart {
+	position: absolute;
+	top: 0;
+
+	opacity: 0;
+}
+
+.c-nav-icon.c--flash .c-nav-icon__empty-heart {
+	opacity: 0;
+}
+
+.c-nav-icon.c--flash .c-nav-icon__full-heart {
 	opacity: 1;
 }
 

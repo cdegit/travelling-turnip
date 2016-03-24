@@ -48,6 +48,8 @@ $(function(){
 		localStorage: new Backbone.LocalStorage('meals-backbone'),
 		toggle: function() {
 			this.save({saved: !this.get("saved")});
+
+			Turnip.FooterView.flashSavedIcon();
 		}
 	});
 
@@ -175,6 +177,8 @@ $(function(){
       		turnip.User.set('savedRecipes', saved);
       		turnip.User.save();
 
+			Turnip.FooterView.flashSavedIcon();
+
       		this.toggleSavedIcon();
       	},
 
@@ -276,6 +280,14 @@ $(function(){
 		setIcon: function(name) {
 			$('.c-nav-icon').removeClass('c--active');
 			this.$el.find('.c--' + name).addClass('c--active');
+		},
+
+		flashSavedIcon: function() {
+			$('.c-nav-icon.c--my-food').addClass('c--flash');
+
+			setTimeout(function() {
+				$('.c-nav-icon.c--my-food').removeClass('c--flash');
+			}, 500);
 		}
 	});
 	

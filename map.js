@@ -12,6 +12,8 @@ $(function() {
 	var Restaurant = Backbone.Model.extend({
 		toggle: function() {
 			this.save({saved: !this.get("saved")});
+
+			Turnip.FooterView.flashSavedIcon();
 		}
 	});
 
