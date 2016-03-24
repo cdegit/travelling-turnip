@@ -26,7 +26,8 @@ $(function() {
 			'click .c-saved-nav a': 'selectSavedTab',
 			'click .js-search': 'showSearch',
 			'change .js-search-field': 'applySearch',
-			'click .js-filter': 'showFilters',
+			'click .js-filter': 'toggleFilters',
+			'click .c-filter__overlay': 'toggleFilters',
 
 			'click .js-search-dietary-restrictions .js-veggie-toggle': 'toggleVeggie',
 			'click .js-search-dietary-restrictions .js-vegan-toggle': 'toggleVegan',
@@ -183,7 +184,7 @@ $(function() {
 			}
 		},
 
-		showFilters: function() {
+		toggleFilters: function() {
 			$('.c-filter').toggleClass('c--active');
 		},
 

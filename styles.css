@@ -693,6 +693,14 @@ header.c--transparent + .c-content {
     box-shadow: 0px 4px 7px rgba(35, 31, 32, 0.2);
 }
 
+.c-filter__overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
 .c-filter.c--active {
 	display: block;
 }
