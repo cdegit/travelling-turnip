@@ -9,7 +9,8 @@ $(function() {
 		},
 
 		events: {
-			'submit .js-add-meal-form': 'addMeal',
+			'submit .js-add-meal-form': 'prevent',
+			'click .js-submit-meal': 'addMeal',
 			'click .js-meal-dietary-restrictions .js-veggie-toggle': 'toggleVeggie',
 			'click .js-meal-dietary-restrictions .js-vegan-toggle': 'toggleVegan',
 			'click .js-meal-dietary-restrictions .js-gf-toggle': 'toggleGF'
@@ -23,6 +24,10 @@ $(function() {
 		render: function() {
 			this.$el.html(this.template());
 			return this.$el;
+		},
+
+		prevent: function(e) {
+			e.preventDefault();
 		},
 
 		addMeal: function(e) {
@@ -98,7 +103,7 @@ $(function() {
 		mealId: -1,
 
 		events: {
-			'submit .js-add-recipe-form': 'addRecipe',
+			'click .js-submit-recipe': 'addRecipe',
 			'click .js-recipe-dietary-restrictions .js-veggie-toggle': 'toggleVeggie',
 			'click .js-recipe-dietary-restrictions .js-vegan-toggle': 'toggleVegan',
 			'click .js-recipe-dietary-restrictions .js-gf-toggle': 'toggleGF',
@@ -256,7 +261,7 @@ $(function() {
 		},
 
 		events: {
-			'submit .js-add-restaurant-form': 'addRestaurant',
+			'click .js-submit-restaurant': 'addRestaurant',
 		},
 
 		render: function(mealId) {
