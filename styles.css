@@ -623,20 +623,29 @@ header.c--transparent + .c-content {
 	z-index: 1;
 }
 
+.c-onboarding .m-scooch {
+	height: 100%;
+}
+
 .c-onboarding .m-scooch-inner {
 	height: 100%;
 }
 
 .c-onboarding .m-item {
+	position: relative;
+
 	height: 100%;
 	background-color: #fcf1f5;
 	background-position-x: 50%;
-	background-position-y: 130%;
+	background-position-y: 0%;
 	background-repeat: no-repeat;
 }
 
-.c-onboarding img {
-	margin-top: 100%;
+.c-onboarding__img {
+	position: absolute;
+	bottom: 0;
+
+	width: 100%;
 }
 
 .c-onboarding__skip {
