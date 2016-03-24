@@ -157,7 +157,7 @@ var defaultData = {
 		}]
 	},{
 		id: 3,
-		title: 'Italian Antipasto Salad',
+		title: 'Antipasto Salad',
 		restrictions: {
 			veggie: true,
 			vegan: true,
@@ -434,7 +434,8 @@ var defaultData = {
 		hours: 'CLOSED NOW. OPENS AT 11:00AM',
 		availableMeals: [
 			'Vegan Antipasto',
-			'Vegetarian thin crust avocado pizza'
+			'Vegetarian thin crust avocado pizza',
+			'Eggplant Caponata'
 		]
 	},{
 		id: 4,
@@ -453,7 +454,8 @@ var defaultData = {
 		hours: 'CLOSED NOW. OPENS AT 11:00AM',
 		availableMeals: [
 			'Vegan Antipasto',
-			'Vegetarian thin crust avocado pizza'
+			'Vegetarian thin crust avocado pizza',
+			'Radicchio Salad'
 		]
 	}],
 	phraseComponents: [{
