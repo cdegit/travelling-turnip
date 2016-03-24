@@ -44,6 +44,7 @@ $(function() {
  			$("#main").html(view.render(true).el);
 
  			Turnip.HeaderView.showTransparentHeader();
+ 			Turnip.FooterView.setIcon('meals');
  		} else {
  			router.navigate('meals', {trigger: true});
  		}
@@ -70,6 +71,7 @@ $(function() {
 			$("#main").append('<div class="u-full-padding"><a href="#add/meal/' + meal.get('id') + '/recipe"><img src="img/button_add-recipe.png"></a></div>');
 
  			Turnip.HeaderView.showBackHeader({title: meal.get('title') + ' Recipes'});
+ 			Turnip.FooterView.setIcon('meals');
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
@@ -89,6 +91,7 @@ $(function() {
 			$("#main").html(view.render(true).el);
 
 			Turnip.HeaderView.showBackHeader({title: model.get('title')});
+			Turnip.FooterView.setIcon('meals');
 		} else {
 			router.navigate('meals', {trigger: true});
 		}
@@ -170,6 +173,7 @@ $(function() {
 		Turnip.renderRestaurantMarkers(Turnip.Restaurants);
 
 		Turnip.HeaderView.showLocationHeader();
+		Turnip.FooterView.setIcon('restaurants');
 	});
 
 	router.on('route:restaurantDetail', function(id) {
@@ -180,6 +184,7 @@ $(function() {
  			$("#main").html(view.render(true).el);
 
  			Turnip.HeaderView.showTransparentHeader();
+ 			Turnip.FooterView.setIcon('restaurants');
  		} else {
  			router.navigate('map', {trigger: true});
  		}

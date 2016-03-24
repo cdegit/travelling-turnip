@@ -24,7 +24,7 @@ $(function() {
 			'click .js-close': 'goToHome',
 			'click .js-close-search': 'closeSearch',
 			'click .c-saved-nav a': 'selectSavedTab',
-			'click [alt=search]': 'showSearch',
+			'click .js-search': 'showSearch',
 			'change .js-search-field': 'applySearch',
 			'click .js-filter': 'showFilters',
 
