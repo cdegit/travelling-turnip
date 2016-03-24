@@ -591,6 +591,10 @@ header.c--transparent + .c-content {
 	box-shadow: 4px 4px 5px rgba(35, 31, 32, 0.35);
 }
 
+.c-phrase:first-child {
+	border: 2px solid #939FA6;
+}
+
 .c-phrase + .c-phrase {
 	margin-top: 20px;
 }

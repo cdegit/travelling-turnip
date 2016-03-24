@@ -255,6 +255,8 @@ $(function() {
 		Turnip.PhrasesView.render();
 		Turnip.FooterView.setIcon('phrasebook');
 		Turnip.HeaderView.showPhrasesHeader();
+
+		scrollTo(0, 0);
 	});
 
 	router.on('route:createPhrase', function() {
