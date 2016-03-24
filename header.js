@@ -163,18 +163,17 @@ $(function() {
 				filteredRestaurants = Turnip.Restaurants.filter(function(restaurant) {
 					var matchedOne;
 					queries.forEach(function(query) {
-						// Can use meal:NAME to find restaurants that serve that specific meal
-						if (query.includes('meal:')) {
-							var val = query.split(':')[1].toLowerCase();
+						query = query.toLowerCase();
 
-							if (restaurant.get('availableMeals').join(' ').toLowerCase().includes(val)) {
-								matchedOne = true;
-							}
-						}
-
-						if (restaurant.get('name').toLowerCase().includes(query.toLowerCase())) {
+						if (restaurant.get('name').toLowerCase().includes(query)) {
 							matchedOne = true;
 						}
+
+						restaurant.get('availableMeals').forEach(function(meal) {
+							if (meal.title.toLowerCase().includes(query)) {
+								matchedOne = true;
+							}
+						});
 					});
 
 					return matchedOne;

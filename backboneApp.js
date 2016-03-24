@@ -105,7 +105,7 @@ $(function(){
       		// Automate searching for this meal on the map
       		turnip.Router.navigate('map', {trigger: true});
       		turnip.HeaderView.showSearch();
-      		$('.js-search-field').val('meal:' + this.model.get('title'));
+      		$('.js-search-field').val(this.model.get('title'));
       		turnip.HeaderView.applySearch();
       	}
 	});

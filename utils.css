@@ -46,6 +46,10 @@
 	padding: 20px;
 }
 
+.u-half-padding {
+	padding: 10px;
+}
+
 .c-arrange {
 	display: flex;
 }

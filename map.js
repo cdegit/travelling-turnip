@@ -35,7 +35,9 @@ $(function() {
 		markerTemplate: _.template($('#restaurant-marker-template').html()),
 
 		events: {
-			'click .js-toggle-saved' : 'toggleSaved'
+			'click .js-toggle-saved' : 'toggleSaved',
+			'click .c-restaurant-meal-list__add .c-button': 'addMeals',
+			'click .js-add-meal': 'toggleAdd'
 		},
 
 		render: function() {
@@ -65,6 +67,37 @@ $(function() {
       		} else {
       			this.$el.find('.c-heart').attr('src', 'img/icon_empty-heart.png');
       		}
+      	},
+
+      	addMeals: function(e) {
+      		var $container = $(e.target).parents('.c-restaurant-meal-list');
+      		var mealId = $container.find('select').val();
+      		var meal = Turnip.Meals.get(mealId);
+
+      		if ($container.hasClass('js-tried')) {
+	      		var triedMeals = this.model.get('triedMeals');
+	      		triedMeals.push({
+	      			title: meal.get('title'),
+	      			id: meal.get('id')
+	      		});
+	      		this.model.save({triedMeals: triedMeals});
+	      	} else {
+	      		var availableMeals = this.model.get('availableMeals');
+	      		availableMeals.push({
+	      			title: meal.get('title'),
+	      			id: meal.get('id')
+	      		});
+	      		this.model.save({availableMeals: availableMeals});
+	      	}
+
+      		$container.find('.c-restaurant-meal-list__meals').append('<div class="t-grey c-meal-title"><a href="#meal/' + meal.get('id') + '">' + meal.get('title') + '</a></div>');
+
+      		this.toggleAdd(e);
+      	},
+
+      	toggleAdd: function(e) {
+      		var $container = $(e.target).parents('.c-restaurant-meal-list');
+      		$container.find('.c-restaurant-meal-list__add').toggleClass('c--active');
       	}
 	});
 

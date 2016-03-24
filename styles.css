@@ -749,3 +749,15 @@ header.c--transparent + .c-content {
 .c-select__fake .c-icon {
 	pointer-events: none;
 }
+
+.c-restaurant-meal-list__add {
+	display: none;
+}
+
+.c-restaurant-meal-list__add.c--active {
+	display: block;
+}
+
+.c-meal-title {
+	margin: 20px 0;
+}

@@ -393,11 +393,14 @@ var defaultData = {
 		site: '',
 		phone: '+39 06 446 2046',
 		hours: 'CLOSED NOW. OPENS AT 12:00PM',
-		availableMeals: [
-			'Vegan Lasagna',
-			'Homemade spaghetti with mushrooms',
-			'Rosemary Focaccia'
-		]
+		triedMeals: [],
+		availableMeals: [{
+			title: 'Focaccia',
+			id: 1
+		}, {
+			title: 'Eggplant Caponata',
+			id: 4
+		}]
 	},{
 		id: 2,
 		name: 'Via dei Castani',
@@ -413,10 +416,14 @@ var defaultData = {
 		site: 'VIADEICASTANI.IT',
 		phone: '+39 06 230 4855',
 		hours: 'CLOSED NOW. OPENS AT 9:00AM',
-		availableMeals: [
-			'Vegan Antipasto',
-			'Vegetarian thin crust avocado pizza'
-		]
+		triedMeals: [],
+		availableMeals: [{
+			title: 'Antipasto Salad',
+			id: 3
+		}, {
+			title: 'Eggplant Caponata',
+			id: 4
+		}]
 	},{
 		id: 3,
 		name: 'Da Vittorio',
@@ -432,11 +439,11 @@ var defaultData = {
 		site: 'vittorio.it',
 		phone: '+39 06 230 4855',
 		hours: 'CLOSED NOW. OPENS AT 11:00AM',
-		availableMeals: [
-			'Veggie Antipasto Salad',
-			'Vegetarian thin crust avocado pizza',
-			'Eggplant Caponata'
-		]
+		triedMeals: [],
+		availableMeals: [{
+			title: 'Radicchio Salad',
+			id: 2
+		}]
 	},{
 		id: 4,
 		name: 'Enoteca Pinchiorri',
@@ -452,11 +459,11 @@ var defaultData = {
 		site: 'enoteca.it',
 		phone: '+39 06 230 4855',
 		hours: 'CLOSED NOW. OPENS AT 11:00AM',
-		availableMeals: [
-			'Vegan Antipasto Salad',
-			'Vegetarian thin crust avocado pizza',
-			'Radicchio Salad'
-		]
+		triedMeals: [],
+		availableMeals: [{
+			title: 'Focaccia',
+			id: 2
+		}]
 	}],
 	phraseComponents: [{
 		english: 'I\'m vegan',

@@ -641,18 +641,49 @@
 
 				<hr class="u-margin-top-lg">
 
-				<h3 class="t-title t-h3">
-					Meals you have tried
-					<img src="img/icon_add-resto-meal.png">
-				</h3>
+				<div class="c-restaurant-meal-list js-tried">
+					<h3 class="t-title t-h3 c-arrange c--center">
+						Meals you have tried
+						<img src="img/icon_add-resto-meal.png" class="u-half-padding js-add-meal">
+					</h3>
+					
+					<div class="c-restaurant-meal-list__add">
+						<select>
+							<% Turnip.Meals.forEach(function(meal, index){ %>
+								<option value="<%- meal.get('id') %>"><%- meal.get('title') %></option>
+							<% }); %>
+						</select>
+						<button class="c-button c--secondary">Add</button>
+					</div>
 
-				<h3 class="t-title t-h3 u-margin-top-lg">
-					Meals Available
-					<img src="img/icon_add-resto-meal.png">
-				</h3>
-				<% _.each(availableMeals, function(availableMeal, index){ %>
-					<div class="t-grey"><%- availableMeal %></div>
-				<% }); %>
+					<div class="c-restaurant-meal-list__meals">
+						<% _.each(triedMeals, function(triedMeal, index) { %>
+							<div class="t-grey c-meal-title"><a href="#meal/<%- triedMeal.id %>"><%- triedMeal.title %></a></div>
+						<% }); %>
+					</div>
+				</div>
+
+				<div class="c-restaurant-meal-list u-margin-top-lg js-available">
+					<h3 class="t-title t-h3 c-arrange c--center">
+						Meals Available
+						<img src="img/icon_add-resto-meal.png" class="u-half-padding js-add-meal">
+					</h3>
+
+					<div class="c-restaurant-meal-list__add">
+						<select>
+							<% Turnip.Meals.forEach(function(meal, index){ %>
+								<option value="<%- meal.get('id') %>"><%- meal.get('title') %></option>
+							<% }); %>
+						</select>
+						<button class="c-button c--secondary">Add</button>
+					</div>
+					
+					<div class="c-restaurant-meal-list__meals">
+						<% _.each(availableMeals, function(availableMeal, index) { %>
+							<div class="t-grey c-meal-title"><a href="#meal/<%- availableMeal.id %>"><%- availableMeal.title %></a></div>
+						<% }); %>
+					</div>
+				</div>
 			</div>
 		</script>
 
