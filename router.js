@@ -102,6 +102,10 @@ $(function() {
 		$('.c-sheet').addClass('c--active');
 	});
 
+	$('.c-overlay').on('click', function() {
+		window.history.back();
+	});
+
 	router.on('route', function(route) {
 		if (route !== 'add') {
 			$('.c-overlay').removeClass('c--active');
