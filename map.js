@@ -91,8 +91,6 @@ $(function() {
 	      	}
 
       		$container.find('.c-restaurant-meal-list__meals').append('<div class="t-grey c-meal-title"><a href="#meal/' + meal.get('id') + '">' + meal.get('title') + '</a></div>');
-
-      		this.toggleAdd(e);
       	},
 
       	toggleAdd: function(e) {

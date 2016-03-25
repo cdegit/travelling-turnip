@@ -764,7 +764,27 @@ header.c--transparent + .c-content {
 }
 
 .c-restaurant-meal-list__add.c--active {
-	display: block;
+	display: flex;
+	align-items: center;
+}
+
+.c-restaurant-meal-list__add select {
+	height: 40px;
+	width: 100%;
+	padding: 10px;
+
+	background-color: #EEEDE8;
+	border: none;
+
+	color: #939FA6;
+	text-transform: uppercase;
+	font-style: italic;
+	letter-spacing: 1px;
+	font-size: 12px;
+}
+
+.c-restaurant-meal-list__add .c-button {
+	height: 40px;
 }
 
 .c-meal-title {
