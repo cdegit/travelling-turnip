@@ -2,6 +2,10 @@
 	box-sizing: border-box;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 html.c--taupe {
 	background-color: #EEEDE8;
 }
@@ -44,6 +48,8 @@ header.c--extended-plus + .c-content {
 }
 
 .c-header-icons ul {
+	overflow: hidden;
+
 	display: flex;
 	align-items: center;
 
@@ -98,6 +104,8 @@ header.c--extended-plus + .c-content {
 }
 
 .c-main-nav ul {
+	overflow: hidden;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
