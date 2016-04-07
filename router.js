@@ -5,6 +5,7 @@ $(function() {
 			'meal/:id': 'mealAbout',
 			'meal/:id/recipes': 'mealRecipes',
 			'meal/:id/recipes/:rid': 'recipeDetail',
+			'meal/:id/ingredients': 'mealIngredients',
 
 			'add': 'add',
 			'addMeal': 'addMeal',
@@ -48,6 +49,20 @@ $(function() {
  		} else {
  			router.navigate('meals', {trigger: true});
  		}
+	});
+
+	router.on('route:mealIngredients', function(id) {
+		var meal = Turnip.Meals.get(id);
+
+		if (meal) {
+			var view = new Turnip.MealView({model: Turnip.Meals.get(id)});
+ 			$("#main").html(view.renderIngredients().el);
+
+ 			Turnip.HeaderView.showTransparentHeader();
+ 			Turnip.FooterView.setIcon('meals');
+		} else {
+			router.navigate('meals', {trigger: true});
+		}
 	});
 
 	router.on('route:mealRecipes', function(id) {

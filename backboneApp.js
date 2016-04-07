@@ -70,6 +70,7 @@ $(function(){
 		className: 'c-meal',
 		template: _.template($('#meal-template').html()),
 		detailTemplate: _.template($('#meal-detail-template').html()),
+		ingredientsTemplate: _.template($('#meal-ingredients-template').html()),
 
 		events: {
 			'click .js-toggle-saved' : 'toggleSaved',
@@ -107,6 +108,11 @@ $(function(){
       		turnip.HeaderView.showSearch();
       		$('.js-search-field').val(this.model.get('title'));
       		turnip.HeaderView.applySearch();
+      	},
+
+      	renderIngredients: function() {
+      		this.$el.html(this.ingredientsTemplate(this.model.toJSON()));
+      		return this;
       	}
 	});
 
