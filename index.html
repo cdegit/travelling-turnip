@@ -308,7 +308,7 @@
 					<div class="c-button-container">
 						<a href="#meal/<%- id %>" class="c-button">About</a>
 						<a class="c-button js-show-restaurants">Restaurants</a>
-						<a href="#meal/<%- id %>/recipes" class="c-button">Recipes</a>
+						<a href="#meal/<%- id %>/ingredients" class="c-button">Ingredients</a>
 					</div>
 				</div>
 			</div>
@@ -332,10 +332,11 @@
 			<div class="c-meal__actions c--dark">
 				<div class="c-button-container">
 					<a class="c-button c--light js-show-restaurants">Restaurants</a>
-					<a href="#meal/<%- id %>/recipes" class="c-button c--light">Recipes</a>
+					<a href="#meal/<%- id %>/ingredients" class="c-button c--light">Ingredients</a>
 				</div>
 			</div>
 			<div class="c-meal__content">
+				<button class="js-toggle-saved c-detail-toggle"><img src="img/icon_empty-heart.png" class="c-icon c-heart"></button>
 				<h3 class="c-meal__title">About</h3>
 				<p class="c-meal__description c--compressed">
 					<%- about %>
