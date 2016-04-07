@@ -82,8 +82,9 @@ $(function(){
 				this.$el.html(this.detailTemplate(this.model.toJSON()));
 			} else {
 				this.$el.html(this.template(this.model.toJSON()));
-				this.setSavedIcon();
 			}
+
+			this.setSavedIcon();
       		
       		return this;
       	},
@@ -112,6 +113,7 @@ $(function(){
 
       	renderIngredients: function() {
       		this.$el.html(this.ingredientsTemplate(this.model.toJSON()));
+      		this.setSavedIcon();
       		return this;
       	}
 	});
